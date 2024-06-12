@@ -30,6 +30,8 @@ function init() {
     light.position.set(5, 10, 7.5).normalize();
     scene.add(light);
 
+    
+
     // Starfield Background
     createStarfield();
 

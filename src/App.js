@@ -1,25 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import ThreeScene from './ThreeScene';
+import PlanetInfo from './PlanetInfo'; // This will be our UI component to show on click
 
-function App() {
+const App = () => {
+  const [showPlanetInfo, setShowPlanetInfo] = useState(false);
+
+  const handlePlanetClick = () => {
+    setShowPlanetInfo(true);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <>
+    <div>
+      <ThreeScene onPlanetClick={handlePlanetClick} />
+      {showPlanetInfo && <PlanetInfo />}
     </div>
+    </>
   );
-}
+};
 
 export default App;
