@@ -44,7 +44,7 @@ const ThreeScene = ({ onPlanetClick , planetInfo, planetNames}) => {
     light.position.set(5, 10, 7.5).normalize();
     scene.add(light);
 
-    const ambientLight = new THREE.AmbientLight(0x404040, 0.5);
+    const ambientLight = new THREE.AmbientLight(0x404040, 2.75);
     scene.add(ambientLight);
 
     // Starfield setup
@@ -149,7 +149,7 @@ const ThreeScene = ({ onPlanetClick , planetInfo, planetNames}) => {
 
 
     // You can create more planets dynamically in a loop if needed
-    const numberOfPlanets = 5;
+    const numberOfPlanets = 10;
 
     if(runOnce === 0){
       for (let i = 0; i < numberOfPlanets; i++) {
