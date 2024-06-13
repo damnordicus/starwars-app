@@ -4,7 +4,7 @@ import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 import { OBJLoader } from 'three/examples/jsm/loaders/OBJLoader.js';
 
-const ThreeScene = ({ onPlanetClick , planetInfo, planetNames}) => {
+const ThreeScene = ({ onPlanetClick , planetDatas, planetNames}) => {
   const mountRef = useRef(null);
   const [planet, setPlanet] = useState(null);
   const planets = [];
@@ -97,7 +97,6 @@ const ThreeScene = ({ onPlanetClick , planetInfo, planetNames}) => {
       
       if (intersects.length > 0) {//&& intersects[0].object === typeof(Mesh)) {
         const intersectObject = intersects[0].object;
-        console.log(intersectObject.planetId)
         if (intersectObject.planetId !== undefined) {
           moveCameraToPlanet(intersectObject);
           onPlanetClick(intersectObject.planetId);
@@ -199,7 +198,8 @@ const ThreeScene = ({ onPlanetClick , planetInfo, planetNames}) => {
                 planetIdLabel.style.display = 'block';
                 planetIdLabel.style.left = `${event.clientX + 10}px`;
                 planetIdLabel.style.top = `${event.clientY + 10}px`;
-                planetIdLabel.innerHTML = `Planet ID: ${intersectedObject.planetId}`;
+               
+                planetIdLabel.innerHTML = `Planet ID: ${planetDatas[intersectedObject.planetId -1].name}`;
                 
                 selectedPlanet = intersectedObject;
             } else {
