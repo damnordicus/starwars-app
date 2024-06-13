@@ -8,6 +8,7 @@ const ThreeScene = ({ onPlanetClick , planetDatas, planetNames}) => {
   const [planet, setPlanet] = useState(null);
   const planets = [];
   const [sceneReady, setSceneReady] = useState(false);
+  let secretCounter = 0;
 
   let planetIdCounter = 0;
   const raycaster = new THREE.Raycaster();
@@ -101,6 +102,11 @@ const ThreeScene = ({ onPlanetClick , planetDatas, planetNames}) => {
           moveCameraToPlanet(intersectObject);
           onPlanetClick(intersectObject.planetId);
           
+        } else if(intersectObject.name === ""){
+          secretCounter++;
+          if(secretCounter === 5){
+            alert("HMM....nothing to see here....");
+          }
         }
       }
     };
