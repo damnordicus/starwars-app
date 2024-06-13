@@ -1,0 +1,35 @@
+/* Global styles */
+body {
+  margin: 0; /* Remove default margin to avoid unwanted space around the body */
+}
+
+/* Header styles */
+.header {
+  position: fixed; /* Fix the header at the top of the viewport */
+  top: 3%; /* Align the header to the top */
+  left: 5%; /* Align the header to the left */
+  width: 90%; /* Make the header span the full width of the viewport */
+  height: 60px; /* Set the height of the header */
+  background-color: #333; /* Set a dark background color */
+  color: white; /* Set the text color to white */
+  display: flex; /* Use flexbox for layout */
+  align-items: center; /* Vertically center the items within the header */
+  justify-content: space-between; /* Space out the items horizontally */
+  padding: 0 20px; /* Add padding to the left and right sides */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add a subtle shadow for a floating effect */
+  z-index: 1000; /* Ensure the header is above other elements */
+}
+
+/* Logo styles */
+.header .logo {
+}
+
+/* Navigation styles */
+.header .navigation {
+  display: flex; /* Use flexbox for the navigation links */
+  color: white; /* Set the link color to white */
+}
+
+.header .nav-movies-characters {
+  display: flex;
+}

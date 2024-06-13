@@ -7,8 +7,12 @@ function Header(
 ) {
   return (
     <div className="header">
-      <img src="../public/app-logo.png" alt="Super Cool Logo" />
-      <div className="navigation">
+      <img
+        className="logo"
+        src="../public/app-logo.png"
+        alt="Super Cool Logo"
+      />
+      <div className="nav-planets">
         <label for="planets">Choose a planet:</label>
         <select id="planets" name="planets">
           <option value="mun">Volvo</option>
@@ -22,10 +26,12 @@ function Header(
 
           */}
         </select>
-        <p>characters home nav button</p>
-        {/* This will navigate to a homepage that lists all the characters */}
-        <p>movies home nav button</p>
-        {/* This will navigate to a homepage that lists all the movies */}
+        <div className="nav-movies-characters">
+          <p>characters home nav button</p>
+          {/* This will navigate to a homepage that lists all the characters */}
+          <p>movies home nav button</p>
+          {/* This will navigate to a homepage that lists all the movies */}
+        </div>
       </div>
       <h1>STAR WARS APP</h1>
     </div>
