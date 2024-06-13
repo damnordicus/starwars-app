@@ -32,12 +32,18 @@ const ThreeScene = ({ onPlanetClick }) => {
     light.position.set(5, 10, 7.5).normalize();
     scene.add(light);
 
-    const ambientLight = new THREE.AmbientLight(0x404040, 2);
+    const ambientLight = new THREE.AmbientLight(0x404040, 0.5);
     scene.add(ambientLight);
 
     // Starfield setup
     const starGeometry = new THREE.BufferGeometry();
-    const starMaterial = new THREE.PointsMaterial({ color: 0xffffff });
+    const starMaterial = new THREE.PointsMaterial({
+      size: 2,
+      map: new THREE.TextureLoader().load('circle.png'),
+      blending: THREE.AdditiveBlending,
+      transparent: true,
+      depthWrite: false
+    });//({ color: 0xffffff });
 
     const starVertices = [];
     for (let i = 0; i < 10000; i++) {
@@ -75,47 +81,47 @@ const ThreeScene = ({ onPlanetClick }) => {
 
       raycaster.setFromCamera(mouse, camera);
       const intersects = raycaster.intersectObjects(scene.children, true);
-        
-      if (intersects.length > 0 ){//&& intersects[0].object === typeof(Mesh)) {
+
+      if (intersects.length > 0) {//&& intersects[0].object === typeof(Mesh)) {
         const intersectObject = intersects[0].object;
 
-        if(intersectObject.planetId !== undefined){
+        if (intersectObject.planetId !== undefined) {
           onPlanetClick(intersectObject.planetId);
         }
       }
     };
 
-const planetTextureLoader = new THREE.TextureLoader();
+    const planetTextureLoader = new THREE.TextureLoader();
 
-function createPlanet(texturePath, radius, widthSegments, heightSegments, position) {
-    const texture = planetTextureLoader.load(texturePath);
-    const geometry = new THREE.SphereGeometry(radius, widthSegments, heightSegments);
-    const material = new THREE.MeshStandardMaterial({ map: texture });
-    const planetMesh = new THREE.Mesh(geometry, material);
+    function createPlanet(texturePath, radius, widthSegments, heightSegments, position) {
+      const texture = planetTextureLoader.load(texturePath);
+      const geometry = new THREE.SphereGeometry(radius, widthSegments, heightSegments);
+      const material = new THREE.MeshStandardMaterial({ map: texture });
+      const planetMesh = new THREE.Mesh(geometry, material);
 
-    planetMesh.planetId = planetIdCounter++;
+      planetMesh.planetId = planetIdCounter++;
 
-    planetMesh.position.set(position.x, position.y, position.z);
-    scene.add(planetMesh);
-    planets.push(planetMesh);
+      planetMesh.position.set(position.x, position.y, position.z);
+      scene.add(planetMesh);
+      planets.push(planetMesh);
 
-    return planetMesh;
-}
+      return planetMesh;
+    }
 
-// Example usage:
-const planet1 = createPlanet('../dirt.jpg', 10, 32, 32, { x: 0, y: 0, z: -50 });
-setPlanet(planet1);
+    // Example usage:
+    // const planet1 = createPlanet('../dirt.jpg', 10, 32, 32, { x: 0, y: 0, z: -50 });
+    // setPlanet(planet1);
 
 
-// You can create more planets dynamically in a loop if needed
-const numberOfPlanets = 5;
-for (let i = 0; i < numberOfPlanets; i++) {
-    const x = Math.random() * 500 - 50; // Random x position
-    const y = Math.random() * 500 - 50; // Random y position
-    const z = Math.random() * 200 - 100; // Random z position
-    const planet = createPlanet('../dirt.jpg', 10, 32, 32, { x, y, z });
-    setPlanet(planet);
-}
+    // You can create more planets dynamically in a loop if needed
+    const numberOfPlanets = 5;
+    for (let i = 0; i < numberOfPlanets; i++) {
+      const x = Math.random() * 100 - 50; // Random x position
+      const y = Math.random() * 100 - 50; // Random y position
+      const z = Math.random() * 200 - 100; // Random z position
+      const planet = createPlanet('../dirt.jpg', 10, 32, 32, { x, y, z });
+      setPlanet(planet);
+    }
 
     window.addEventListener('click', onMouseClick, false);
 
@@ -144,7 +150,7 @@ for (let i = 0; i < numberOfPlanets; i++) {
       window.removeEventListener('resize', onWindowResize);
       mountRef.current.removeChild(renderer.domElement);
     };
-  }, [onPlanetClick]);
+  }, []);
 
   return <div ref={mountRef} />;
 };
