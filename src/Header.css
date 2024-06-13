@@ -1,15 +1,20 @@
+@import url("https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap");
 /* Global styles */
 body {
-  margin: 0; /* Remove default margin to avoid unwanted space around the body */
+  margin: 0;
+  font-family: "Orbitron", sans-serif;
+  color: white; /* Default text color */
+  background-color: #000; /* Background color for a space look */
+  /* Remove default margin to avoid unwanted space around the body */
 }
 
-/* Header styles */
+/* Header styles -------------------------------------------------------- */
 .header {
   position: fixed; /* Fix the header at the top of the viewport */
   top: 3%; /* Align the header to the top */
-  left: 5%; /* Align the header to the left */
-  width: 90%; /* Make the header span the full width of the viewport */
-  height: 60px; /* Set the height of the header */
+  right: 2%; /* Align the header to the left */
+  width: 94%; /* Make the header span the full width of the viewport */
+  height: 80px; /* Set the height of the header */
   background-color: #333; /* Set a dark background color */
   color: white; /* Set the text color to white */
   display: flex; /* Use flexbox for layout */
@@ -18,18 +23,170 @@ body {
   padding: 0 20px; /* Add padding to the left and right sides */
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add a subtle shadow for a floating effect */
   z-index: 1000; /* Ensure the header is above other elements */
+  opacity: 0.9;
 }
 
-/* Logo styles */
+/* Logo styles ---------------------------------------------------------- */
 .header .logo {
+  border-radius: 50%;
+  height: 70px;
 }
 
 /* Navigation styles */
-.header .navigation {
-  display: flex; /* Use flexbox for the navigation links */
-  color: white; /* Set the link color to white */
-}
 
 .header .nav-movies-characters {
   display: flex;
+  float: right;
+  margin-left: 10%;
+}
+
+/* button styling ------------------------------------------------------------- */
+.cool-button {
+  background: linear-gradient(65deg, rgb(110, 37, 144), rgb(13, 101, 101));
+  border: none;
+  margin-left: 30px;
+  border-radius: 50px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  color: white;
+  cursor: pointer;
+  font-size: 16px;
+  padding: 10px 20px;
+  text-transform: uppercase;
+  transition: transform 0.2s, box-shadow 0.2s;
+  outline: none;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Add a hover effect */
+.cool-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+}
+
+/* Add an active effect */
+.cool-button:active {
+  transform: translateY(0);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Add a glowing effect */
+.cool-button::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.2),
+    transparent 70%
+  );
+  transition: opacity 0.2s;
+}
+
+.cool-button:hover::before {
+  opacity: 0.5;
+}
+
+/* Add a futuristic border effect */
+.cool-button::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 50px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  pointer-events: none;
+}
+
+/* SELECT BAR STUFF ---------------------------- */
+
+/* General select styling */
+.select {
+  background: linear-gradient(65deg, rgb(110, 37, 144), rgb(13, 101, 101));
+  border: none;
+  border-radius: 50px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  color: white;
+  cursor: pointer;
+  font-size: 16px;
+  padding: 10px 20px;
+  text-transform: uppercase;
+  transition: transform 0.2s, box-shadow 0.2s;
+  outline: none;
+  appearance: none; /* Remove default arrow */
+  -webkit-appearance: none; /* Remove default arrow in Safari */
+  position: relative;
+  overflow: hidden;
+}
+
+/* Add a hover effect */
+.select:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+}
+
+/* Add an active effect */
+.select:active {
+  transform: translateY(0);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  color: black;
+}
+
+/* Add a glowing effect */
+.select::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.2),
+    transparent 70%
+  );
+  transition: opacity 0.2s;
+  pointer-events: none;
+}
+
+.select:hover::before {
+  opacity: 0.5;
+}
+
+/* Add a futuristic border effect */
+.select::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 50px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  pointer-events: none;
+}
+
+/* Arrow styling */
+.select::-ms-expand {
+  display: none; /* Remove default arrow in IE */
+}
+
+.select::after {
+  content: "▼";
+  font-size: 12px;
+  position: absolute;
+  top: 50%;
+  right: 20px;
+  transform: translateY(-50%);
+  pointer-events: none;
+  color: rgba(215, 71, 71, 0.7);
+}
+
+.options {
+  color: #333;
 }
