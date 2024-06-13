@@ -4,8 +4,8 @@ const PlanetInfo = ({planetId, setShowPlanetInfo, showPlanetInfo}) => {
 
   const handleClick = () => {
     setShowPlanetInfo(!showPlanetInfo);
-  }
-
+    }
+    //test
   return (
     <div onClick={handleClick}style={{ position: 'absolute', top: 20, right: 20, padding: '20px', backgroundColor: 'rgba(255, 255, 255, 0.8)' }}>
       <h2>Planet Information</h2>
