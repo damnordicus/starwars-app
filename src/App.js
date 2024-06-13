@@ -4,8 +4,10 @@ import PlanetInfo from './PlanetInfo'; // This will be our UI component to show 
 
 const App = () => {
   const [showPlanetInfo, setShowPlanetInfo] = useState(false);
+  const [selectedPlanetId, setSelectedPlanetId] = useState(null);
 
-  const handlePlanetClick = () => {
+  const handlePlanetClick = (input) => {
+    setSelectedPlanetId(input);
     setShowPlanetInfo(true);
   };
 
@@ -13,7 +15,7 @@ const App = () => {
     <>
     <div>
       <ThreeScene onPlanetClick={handlePlanetClick} />
-      {showPlanetInfo && <PlanetInfo />}
+      {showPlanetInfo && <PlanetInfo planetId={selectedPlanetId} setShowPlanetInfo={setShowPlanetInfo} showPlanetInfo={showPlanetInfo} />}
     </div>
     </>
   );
