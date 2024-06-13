@@ -39,8 +39,8 @@ const PlanetInfo = ({ planetId, setShowPlanetInfo, showPlanetInfo }) => {
       onClick={handleClick}
       style={{
         position: "absolute",
-        top: 20,
-        right: 20,
+        top: 120,
+        right: "2%",
         padding: "20px",
         backgroundColor: "rgba(255, 255, 255, 0.8)",
       }}
