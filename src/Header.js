@@ -1,5 +1,6 @@
 import React from "react";
 import "./Header.css";
+import appLogo from "./app-logo.png";
 
 function Header(
   {
@@ -8,18 +9,24 @@ function Header(
 ) {
   return (
     <div className="header">
-      <img
-        className="logo"
-        src="../public/app-logo.png"
-        alt="Super Cool Logo"
-      />
+      <div>
+        <img className="logo" src={appLogo} alt="Super Cool Logo" />
+      </div>
       <div className="nav-planets">
-        <label for="planets">Choose a planet:</label>
-        <select id="planets" name="planets">
-          <option value="mun">Volvo</option>
-          <option value="sol">Saab</option>
-          <option value="ya motha">Fiat</option>
-          <option value="Mars">Audi</option>
+        <label>Choose a planet:</label>
+        <select className="select" id="planets" name="planets">
+          <option className="options" value="mun">
+            mun
+          </option>
+          <option className="options" value="sol">
+            sol
+          </option>
+          <option className="options" value="ya motha">
+            ya motha
+          </option>
+          <option className="options" value="Mars">
+            Mars
+          </option>
           {/* Make this section of options dynamic based on the planet prop passed in:
             Something like:
               planets.map(
@@ -27,12 +34,12 @@ function Header(
 
           */}
         </select>
-        <div className="nav-movies-characters">
-          <p>characters home nav button</p>
-          {/* This will navigate to a homepage that lists all the characters */}
-          <p>movies home nav button</p>
-          {/* This will navigate to a homepage that lists all the movies */}
-        </div>
+      </div>
+      <div className="nav-movies-characters">
+        <button className="cool-button">characters</button>
+        {/* This will navigate to a homepage that lists all the characters */}
+        <button className="cool-button">movies</button>
+        {/* This will navigate to a homepage that lists all the movies */}
       </div>
       <h1>STAR WARS APP</h1>
     </div>
