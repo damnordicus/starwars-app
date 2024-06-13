@@ -2,7 +2,6 @@ import { waitFor } from '@testing-library/react';
 import React, { useRef, useEffect, useState, createElement } from 'react';
 import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
-import { OBJLoader } from 'three/examples/jsm/loaders/OBJLoader.js';
 
 const ThreeScene = ({ onPlanetClick , planetInfo, planetNames}) => {
   const mountRef = useRef(null);
@@ -22,24 +21,19 @@ const ThreeScene = ({ onPlanetClick , planetInfo, planetNames}) => {
   // const planetSize = planetInfo.radius;
 
   useEffect(() => {
-    // Scene setup
     const scene = new THREE.Scene();
     scene.background = new THREE.Color(0x000000);
 
-    // Camera setup
     const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
     camera.position.set(0, 5, 20);
 
-    // Renderer setup
     const renderer = new THREE.WebGLRenderer({ antialias: true });
     renderer.setSize(window.innerWidth, window.innerHeight);
     mountRef.current.appendChild(renderer.domElement);
 
-    // Controls setup
     const controls = new OrbitControls(camera, renderer.domElement);
     controls.enableDamping = true;
 
-    // Lighting setup
     const light = new THREE.DirectionalLight(0xffffff, 1);
     light.position.set(5, 10, 7.5).normalize();
     scene.add(light);
@@ -47,7 +41,6 @@ const ThreeScene = ({ onPlanetClick , planetInfo, planetNames}) => {
     const ambientLight = new THREE.AmbientLight(0x404040, 2.75);
     scene.add(ambientLight);
 
-    // Starfield setup
     const starGeometry = new THREE.BufferGeometry();
     const starMaterial = new THREE.PointsMaterial({
       size: 2,
@@ -55,7 +48,7 @@ const ThreeScene = ({ onPlanetClick , planetInfo, planetNames}) => {
       blending: THREE.AdditiveBlending,
       transparent: true,
       depthWrite: false
-    });//({ color: 0xffffff });
+    });
 
     const starVertices = [];
     for (let i = 0; i < 10000; i++) {
@@ -66,18 +59,6 @@ const ThreeScene = ({ onPlanetClick , planetInfo, planetNames}) => {
       starVertices.push(x, y, z);
     }
 
-    // Load a Star Wars Model (e.g., X-Wing)
-    // const loader = new OBJLoader();
-    // loader.load('starwars_model.obj', (object) => {
-    //     object.position.set(0,0,0);
-    //     scene.add(object);
-    // },(xhr) => {
-    //     console.log((xhr.loaded / xhr.total) * 100 + '% loaded');
-    //   },
-    //   (error) => {
-    //     console.error('An error happened', error);
-    //   }
-    // );
     starGeometry.setAttribute('position', new THREE.Float32BufferAttribute(starVertices, 3));
     const stars = new THREE.Points(starGeometry, starMaterial);
     scene.add(stars);
@@ -85,6 +66,37 @@ const ThreeScene = ({ onPlanetClick , planetInfo, planetNames}) => {
     // Planet setup
 
     // Raycaster setup
+
+    const planetTextureLoader = new THREE.TextureLoader();
+
+    // CHANGED: Added 'id' parameter to the createPlanet function
+    // NOTE - Make key value pair with the ID being the key and the uri to the fetched planet data as the value for easy access
+    function createPlanet(id, texturePath, radius, widthSegments, heightSegments, position) {
+      const texture = planetTextureLoader.load(texturePath);
+      const geometry = new THREE.SphereGeometry(radius, widthSegments, heightSegments);
+      const material = new THREE.MeshStandardMaterial({ map: texture });
+      const planetMesh = new THREE.Mesh(geometry, material);
+
+      // CHANGED: Set the planetId to the provided 'id' parameter
+      planetMesh.planetId = id;
+
+      planetMesh.position.set(position.x, position.y, position.z);
+      scene.add(planetMesh);
+      planets.push(planetMesh);
+
+      return planetMesh;
+    }
+
+    const numberOfPlanets = 5;
+    for (let i = 0; i < numberOfPlanets; i++) {
+      const x = Math.random() * 100 - 50;
+      const y = Math.random() * 100 - 50;
+      const z = Math.random() * 200 - 100;
+      // CHANGED: Pass 'i + 1' as the ID to createPlanet function to ensure IDs start from 1
+      const planet = createPlanet(i + 1, '../dirt.jpg', 10, 32, 32, { x, y, z });
+      setPlanet(planet);
+    }
+
     const raycaster = new THREE.Raycaster();
     const mouse = new THREE.Vector2();
 
@@ -94,10 +106,10 @@ const ThreeScene = ({ onPlanetClick , planetInfo, planetNames}) => {
 
       raycaster.setFromCamera(mouse, camera);
       const intersects = raycaster.intersectObjects(scene.children, true);
-      
-      if (intersects.length > 0) {//&& intersects[0].object === typeof(Mesh)) {
+
+      if (intersects.length > 0) {
         const intersectObject = intersects[0].object;
-        console.log(intersectObject.planetId)
+
         if (intersectObject.planetId !== undefined) {
           moveCameraToPlanet(intersectObject);
           onPlanetClick(intersectObject.planetId);
@@ -217,7 +229,6 @@ const ThreeScene = ({ onPlanetClick , planetInfo, planetNames}) => {
     window.addEventListener('mousemove', onMouseMove);
     window.addEventListener('click', onMouseClick, false);
 
-    // Handle window resize
     const onWindowResize = () => {
       camera.aspect = window.innerWidth / window.innerHeight;
       camera.updateProjectionMatrix();
@@ -226,7 +237,6 @@ const ThreeScene = ({ onPlanetClick , planetInfo, planetNames}) => {
 
     window.addEventListener('resize', onWindowResize, false);
 
-    // Animation loop
     const animate = () => {
       requestAnimationFrame(animate);
       for(let i = 0;i < planets.length; i++){
@@ -251,5 +261,5 @@ const ThreeScene = ({ onPlanetClick , planetInfo, planetNames}) => {
 
   return <div ref={mountRef} />;
 };
-//update
+
 export default ThreeScene;
