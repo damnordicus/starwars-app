@@ -2,7 +2,6 @@ import { waitFor } from '@testing-library/react';
 import React, { useRef, useEffect, useState, createElement } from 'react';
 import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
-import { OBJLoader } from 'three/examples/jsm/loaders/OBJLoader.js';
 
 const ThreeScene = ({ onPlanetClick , planetDatas, planetNames}) => {
   const mountRef = useRef(null);
@@ -84,6 +83,7 @@ const ThreeScene = ({ onPlanetClick , planetDatas, planetNames}) => {
     setSceneReady(true);
     // Planet setup
 
+
     // Raycaster setup
     const raycaster = new THREE.Raycaster();
     const mouse = new THREE.Vector2();
@@ -149,13 +149,21 @@ const ThreeScene = ({ onPlanetClick , planetDatas, planetNames}) => {
 
     // You can create more planets dynamically in a loop if needed
     const numberOfPlanets = 10;
-
+    console.log(planetDatas)
     if(runOnce === 0){
       for (let i = 0; i < numberOfPlanets; i++) {
-      const x = Math.random() * 100 - 50; // Random x position
-      const y = Math.random() * 100 - 50; // Random y position
-      const z = Math.random() * 200 - 100; // Random z position
-      const planet = createPlanet(i + 1, "../dirt.jpg", 10, 32, 32, {x,y,z});
+      let x = Math.random() * 200 - 50; // Random x position
+      let y = Math.random() * 200 - 50; // Random y position
+      let z = Math.random() * 300 - 100; // Random z position
+    
+      let radius = (parseInt(planetDatas[i].diameter) / 1000);
+      console.log(planetDatas[i].name + " : " +radius);
+      
+      x += radius;
+      y += radius;
+      z += radius;
+      
+      const planet = createPlanet(i + 1, "../dirt.jpg", radius, 32, 32, {x,y,z});
       //const planet = createPlanet(planetTexture, planetSize, 32, 32, { x, y, z });
       setPlanet(planet);
     }
@@ -243,6 +251,7 @@ const ThreeScene = ({ onPlanetClick , planetDatas, planetNames}) => {
     animate();
 
     return () => {
+      window.removeEventListener('mousemove', onMouseMove);
       window.removeEventListener('click', onMouseClick);
       window.removeEventListener('resize', onWindowResize);
       mountRef.current.removeChild(renderer.domElement);
