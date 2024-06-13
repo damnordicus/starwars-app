@@ -110,7 +110,7 @@ const ThreeScene = ({ onPlanetClick , planetDatas, planetNames}) => {
       const direction = new THREE.Vector3().subVectors(planet.position, camera.position).normalize();
     
       // Position the camera 100 units away from the planet
-      const distance = 50;
+      const distance = 50 + planet.radius;
       const newCameraPosition = new THREE.Vector3().addVectors(planet.position, direction.multiplyScalar(-distance));
     
       // Update the camera position and make it look at the planet
@@ -131,6 +131,7 @@ const ThreeScene = ({ onPlanetClick , planetDatas, planetNames}) => {
           const planetMesh = new THREE.Mesh(geometry, material);
 
           planetMesh.planetId = id;//planetNames[planetIdCounter++];
+          planetMesh.radius = radius;
 
           planetMesh.position.set(position.x, position.y, position.z);
 
@@ -152,9 +153,9 @@ const ThreeScene = ({ onPlanetClick , planetDatas, planetNames}) => {
     console.log(planetDatas)
     if(runOnce === 0){
       for (let i = 0; i < numberOfPlanets; i++) {
-      let x = Math.random() * 200 - 50; // Random x position
-      let y = Math.random() * 200 - 50; // Random y position
-      let z = Math.random() * 300 - 100; // Random z position
+      let x = Math.random() * 500 - 50; // Random x position
+      let y = Math.random() * 500 - 50; // Random y position
+      let z = Math.random() * 500 - 100; // Random z position
     
       let radius = (parseInt(planetDatas[i].diameter) / 1000);
       console.log(planetDatas[i].name + " : " +radius);
@@ -200,6 +201,11 @@ const ThreeScene = ({ onPlanetClick , planetDatas, planetNames}) => {
             if (intersectedObject.planetId !== undefined) {
                 // Update ring position and visibility
                 ring.position.copy(intersectedObject.position);
+                
+                const planetRadius = intersectedObject.radius;
+                ring.geometry.dispose();
+                ring.geometry = new THREE.RingGeometry(planetRadius * 1.1, planetRadius * 1.2, 100);
+
                 ring.visible = true;
     
                 // Display the planet ID
