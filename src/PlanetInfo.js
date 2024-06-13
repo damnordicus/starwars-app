@@ -41,7 +41,7 @@ const PlanetInfo = ({ planetId, setShowPlanetInfo, showPlanetInfo }) => {
   };
 
   return (
-    <div onClick={handleClick} style={{ position: 'absolute', top: 20, right: 20, padding: '20px', backgroundColor: 'rgba(255, 255, 255, 0.8)' }}>
+    <div onClick={handleClick} style={{ position: 'absolute', top: 120, right: 20, padding: '20px', backgroundColor: 'rgba(255, 255, 255, 0.8)' }}>
       <h2>{planetData.name}</h2>
       <p>Planet ID: {planetId}</p>
       <p>Orbital Period: {planetData.orbital_period} days</p>
