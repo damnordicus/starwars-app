@@ -16,7 +16,7 @@ const App = () => {
   return (
     <>
     <div>
-      <ThreeScene onPlanetClick={handlePlanetClick} />
+      <ThreeScene onPlanetClick={handlePlanetClick} planetNames={["test1", "test2", "test3", "test4", "test5"]}/>
       {showPlanetInfo && <PlanetInfo planetId={selectedPlanetId} setShowPlanetInfo={setShowPlanetInfo} showPlanetInfo={showPlanetInfo} />}
     </div>
     </>
