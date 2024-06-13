@@ -42,7 +42,8 @@ const PlanetInfo = ({ planetId, setShowPlanetInfo, showPlanetInfo }) => {
         top: 120,
         right: "2%",
         padding: "20px",
-        backgroundColor: "rgba(255, 255, 255, 0.8)",
+        backgroundColor: "#333",
+        opacity: 0.7,
       }}
     >
       <h2>{planetData.name}</h2>
