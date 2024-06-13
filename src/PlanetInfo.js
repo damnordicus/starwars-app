@@ -11,7 +11,7 @@ const PlanetInfo = ({ planetId, setShowPlanetInfo, showPlanetInfo }) => {
         .then(data => {
           setPlanetData(data); // set the fetched plante data
 
-
+            // Hello Adam!
 
 
           // fetch character data
@@ -63,7 +63,7 @@ const PlanetInfo = ({ planetId, setShowPlanetInfo, showPlanetInfo }) => {
 
 
 
-      <h3>Characters:</h3>
+      <h3>Actors:</h3>
       <ul>
         {characters.length === 0 && <li>N/A...</li>} {/* // Show "N/A..." if there are no characters or data is still loading */}
 
