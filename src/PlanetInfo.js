@@ -34,6 +34,7 @@ const PlanetInfo = ({ planetId, setShowPlanetInfo, showPlanetInfo }) => {
       <p>Orbital Period: {planetData.orbital_period} days</p>
       <p>Rotation Period: {planetData.rotation_period} hours</p>
       <p>Climate: {planetData.climate}</p>
+      <p>Terrain: {planetData.terrain}</p>
       <p>Gravity: {planetData.gravity}</p>
       <p>Surface Water: {planetData.surface_water}</p>
       <p>Population: {planetData.population}</p>
