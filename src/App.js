@@ -23,7 +23,7 @@ const App = () => {
       setLoading(false);
     };
     fetchData();
-  });
+  }, []);
 
   //FETCH - Tiffany
   //Test

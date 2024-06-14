@@ -2,6 +2,8 @@ import { waitFor } from '@testing-library/react';
 import React, { useRef, useEffect, useState, createElement } from 'react';
 import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
+import * as TWEEN from 'tween';
+
 
 const ThreeScene = ({ onPlanetClick , planetDatas, planetNames}) => {
   const mountRef = useRef(null);
@@ -112,17 +114,40 @@ const ThreeScene = ({ onPlanetClick , planetDatas, planetNames}) => {
     };
 
     function moveCameraToPlanet(planet) {
+
+      const planetWorldPosition = new THREE.Vector3();
+      planet.getWorldPosition(planetWorldPosition);
       // Calculate the direction vector from the camera to the planet
-      const direction = new THREE.Vector3().subVectors(planet.position, camera.position).normalize();
+      const direction = new THREE.Vector3().subVectors(planetWorldPosition, camera.position).normalize();
     
       // Position the camera 100 units away from the planet
       const distance = 50 + planet.radius;
-      const newCameraPosition = new THREE.Vector3().addVectors(planet.position, direction.multiplyScalar(-distance));
+      const newCameraPosition = new THREE.Vector3().addVectors(planetWorldPosition, direction.multiplyScalar(-distance));
+
+      new TWEEN.Tween(camera.position)
+        .to({ x: newCameraPosition.x, y: newCameraPosition.y, z: newCameraPosition.z}, 2000)
+        .easing(TWEEN.Easing.Quadratic.Out)
+        .onUpdate(() => {
+          camera.lookAt(planetWorldPosition);
+        })
+        .onComplete(() => {
+          controls.target.copy(planetWorldPosition);
+          controls.update();
+        })
+        .start();
+
+      new TWEEN.Tween(controls.target)
+        .to({ x: planetWorldPosition.x, y: planetWorldPosition.y, z: planetWorldPosition.z}, 2000)
+        .easing(TWEEN.Easing.Quadratic.Out)
+        .onUpdate(() => {
+          controls.update();
+        })
+        .start();
     
       // Update the camera position and make it look at the planet
       camera.position.copy(newCameraPosition);
-      camera.lookAt(planet.position);
-      controls.target.copy(planet.position);  // Update OrbitControls target
+      camera.lookAt(planetWorldPosition);
+      controls.target.copy(planetWorldPosition);  // Update OrbitControls target
       controls.update();
     }
 
@@ -257,6 +282,7 @@ const ThreeScene = ({ onPlanetClick , planetDatas, planetNames}) => {
       }
       scene.rotation.y += 0.0001;
       controls.update();
+      TWEEN.update();
       renderer.render(scene, camera);
     };
 
