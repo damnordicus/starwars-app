@@ -53,7 +53,7 @@ const ThreeScene = ({ onPlanetClick , planetDatas, planetNames}) => {
     const starGeometry = new THREE.BufferGeometry();
     const starMaterial = new THREE.PointsMaterial({
       size: 2,
-      map: new THREE.TextureLoader().load('circle.png'),
+      map: new THREE.TextureLoader().load(`${process.env.PUBLIC_URL}/textures/circle.png`),
       blending: THREE.AdditiveBlending,
       transparent: true,
       depthWrite: false
@@ -195,7 +195,7 @@ const ThreeScene = ({ onPlanetClick , planetDatas, planetNames}) => {
       y += radius;
       z += radius;
       
-      const planet = createPlanet(i + 1, `../${planetDatas[i].name}.jpg`, radius, 32, 32, {x,y,z});
+      const planet = createPlanet(i + 1, `${process.env.PUBLIC_URL}/textures/${planetDatas[i].name}.jpg`, radius, 32, 32, {x,y,z});
       //const planet = createPlanet(planetTexture, planetSize, 32, 32, { x, y, z });
       setPlanet(planet);
     }
