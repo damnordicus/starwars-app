@@ -170,7 +170,7 @@ const ThreeScene = ({ onPlanetClick , planetDatas, planetNames}) => {
       y += radius;
       z += radius;
       
-      const planet = createPlanet(i + 1, "../dirt.jpg", radius, 32, 32, {x,y,z});
+      const planet = createPlanet(i + 1, `../${planetDatas[i].name}.jpg`, radius, 32, 32, {x,y,z});
       //const planet = createPlanet(planetTexture, planetSize, 32, 32, { x, y, z });
       setPlanet(planet);
     }
