@@ -11,6 +11,7 @@ const ThreeScene = ({ onPlanetClick, planetDatas, menuPlanetSelected}) => {
   const [planetData, setPlanetData] = useState([]);
   const planets = [];
   const [sceneReady, setSceneReady] = useState(false);
+  const [planetLocation, setPlanetLocation] = useState([]);
   let secretCounter = 0;
 
   let planetIdCounter = 0;
@@ -112,6 +113,7 @@ const ThreeScene = ({ onPlanetClick, planetDatas, menuPlanetSelected}) => {
 
       if (intersects.length > 0) {//&& intersects[0].object === typeof(Mesh)) {
         const intersectObject = intersects[0].object;
+        console.log(intersectObject);
         if (intersectObject.planetId !== undefined) {
           moveCameraToPlanet(intersectObject);
           onPlanetClick(intersectObject.planetId);
@@ -126,6 +128,10 @@ const ThreeScene = ({ onPlanetClick, planetDatas, menuPlanetSelected}) => {
     };
 
     function moveCameraToPlanet(planet) {
+
+      if(typeof(planet) === THREE.Vector3){
+        console.log("test")
+      }
       
       const planetWorldPosition = new THREE.Vector3();
       planet.getWorldPosition(planetWorldPosition);
@@ -214,9 +220,14 @@ const ThreeScene = ({ onPlanetClick, planetDatas, menuPlanetSelected}) => {
 
         let radius = (parseInt(planetDatas[i].diameter) / 1000);
 
+        
         x += radius;
         y += radius;
         z += radius;
+
+        let temp = new THREE.Vector3(x, y, z);
+
+        setPlanetLocation(prev => [...prev, temp]);
 
         const planet = createPlanet(i + 1, `${process.env.PUBLIC_URL}/textures/${planetDatas[i].name}.jpg`, radius, 32, 32, { x, y, z });
         //const planet = createPlanet(planetTexture, planetSize, 32, 32, { x, y, z });
@@ -225,8 +236,6 @@ const ThreeScene = ({ onPlanetClick, planetDatas, menuPlanetSelected}) => {
       }
       runOnce++;
     }
-
-    console.log(planetData);
 
 
     const ringGeometry = new THREE.RingGeometry(11.5, 12, 100);
@@ -334,8 +343,6 @@ const ThreeScene = ({ onPlanetClick, planetDatas, menuPlanetSelected}) => {
       };
 
     }, [sceneReady]);
-
- 
 
 
   return <div ref={mountRef} style={{ position: 'relative' }} >
