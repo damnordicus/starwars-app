@@ -3,10 +3,19 @@ import React, { useRef, useEffect, useState, createElement } from "react";
 import * as THREE from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 import * as TWEEN from "tween";
+import "./ThreeScene.css";
+
+export const handleButtonClick = (planetId) => {
+  const planet = planets.find((p) => p.planetId === planetId);
+  if (planet) {
+    moveCameraToPlanet(planet);
+  }
+};
 
 const ThreeScene = ({ onPlanetClick, planetDatas, planetNames }) => {
   const mountRef = useRef(null);
   const [planet, setPlanet] = useState(null);
+  const [planetData, setPlanetData] = useState([]);
   const planets = [];
   const [sceneReady, setSceneReady] = useState(false);
   let secretCounter = 0;
@@ -57,7 +66,9 @@ const ThreeScene = ({ onPlanetClick, planetDatas, planetNames }) => {
     const starGeometry = new THREE.BufferGeometry();
     const starMaterial = new THREE.PointsMaterial({
       size: 2,
-      map: new THREE.TextureLoader().load("circle.png"),
+      map: new THREE.TextureLoader().load(
+        `${process.env.PUBLIC_URL}/textures/circle.png`
+      ),
       blending: THREE.AdditiveBlending,
       transparent: true,
       depthWrite: false,
@@ -215,7 +226,6 @@ const ThreeScene = ({ onPlanetClick, planetDatas, planetNames }) => {
 
     // You can create more planets dynamically in a loop if needed
     const numberOfPlanets = 10;
-    console.log(planetDatas);
     if (runOnce === 0) {
       for (let i = 0; i < numberOfPlanets; i++) {
         let x = Math.random() * 500 - 50; // Random x position
@@ -223,7 +233,6 @@ const ThreeScene = ({ onPlanetClick, planetDatas, planetNames }) => {
         let z = Math.random() * 500 - 100; // Random z position
 
         let radius = parseInt(planetDatas[i].diameter) / 1000;
-        console.log(planetDatas[i].name + " : " + radius);
 
         x += radius;
         y += radius;
@@ -231,17 +240,20 @@ const ThreeScene = ({ onPlanetClick, planetDatas, planetNames }) => {
 
         const planet = createPlanet(
           i + 1,
-          `../${planetDatas[i].name}.jpg`,
+          `${process.env.PUBLIC_URL}/textures/${planetDatas[i].name}.jpg`,
           radius,
           32,
           32,
           { x, y, z }
         );
         //const planet = createPlanet(planetTexture, planetSize, 32, 32, { x, y, z });
+        //setPlanetData(prev => [...prev, planet]);
         setPlanet(planet);
       }
       runOnce++;
     }
+
+    console.log(planetData);
 
     const ringGeometry = new THREE.RingGeometry(11.5, 12, 100);
     const ringMaterial = new THREE.MeshBasicMaterial({
@@ -344,7 +356,11 @@ const ThreeScene = ({ onPlanetClick, planetDatas, planetNames }) => {
     };
   }, [sceneReady]);
 
-  return <div ref={mountRef} />;
+  return (
+    <div ref={mountRef} style={{ position: "relative" }}>
+      <div className="overlay"></div>
+    </div>
+  );
 };
 //update
 export default ThreeScene;

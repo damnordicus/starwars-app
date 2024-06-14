@@ -63,6 +63,9 @@ const PlanetInfo = ({ planetId, setShowPlanetInfo, showPlanetInfo }) => {
         opacity: 0.9,
         borderRadius: "8px",
         zIndex: 1000,
+
+        maxHeight: "80vh", // Maximum height of the dialog box
+        overflowY: "auto", // Enable vertical scrolling if content exceeds max height
       }}
     >
 
@@ -85,6 +88,7 @@ const PlanetInfo = ({ planetId, setShowPlanetInfo, showPlanetInfo }) => {
 
 
       <h2>{planetData.name}</h2>
+      <img src={`/textures/${planetData.name}_description.png`} alt={`${planetData.name} Description`} />
       <p>Planet ID: {planetId}</p>
       <p>Orbital Period: {planetData.orbital_period} days</p>
       <p>Rotation Period: {planetData.rotation_period} hours</p>
