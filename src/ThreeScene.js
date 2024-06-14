@@ -2,6 +2,8 @@ import { waitFor } from '@testing-library/react';
 import React, { useRef, useEffect, useState, createElement } from 'react';
 import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
+import * as TWEEN from 'tween';
+
 
 const ThreeScene = ({ onPlanetClick , planetDatas, planetNames}) => {
   const mountRef = useRef(null);
@@ -118,6 +120,26 @@ const ThreeScene = ({ onPlanetClick , planetDatas, planetNames}) => {
       // Position the camera 100 units away from the planet
       const distance = 50 + planet.radius;
       const newCameraPosition = new THREE.Vector3().addVectors(planet.position, direction.multiplyScalar(-distance));
+
+      new TWEEN.Tween(camera.position)
+        .to({ x: newCameraPosition.x, y: newCameraPosition.y, z: newCameraPosition.z}, 2000)
+        .easing(TWEEN.Easing.Quadratic.Out)
+        .onUpdate(() => {
+          camera.lookAt(planet.position);
+        })
+        .onComplete(() => {
+          controls.target.copy(planet.position);
+          controls.update();
+        })
+        .start();
+
+      new TWEEN.Tween(controls.target)
+        .to({ x: planet.position.x, y: planet.position.y, z: planet.position.z}, 2000)
+        .easing(TWEEN.Easing.Quadratic.Out)
+        .onUpdate(() => {
+          controls.update();
+        })
+        .start();
     
       // Update the camera position and make it look at the planet
       camera.position.copy(newCameraPosition);
@@ -257,6 +279,7 @@ const ThreeScene = ({ onPlanetClick , planetDatas, planetNames}) => {
       }
       scene.rotation.y += 0.0001;
       controls.update();
+      TWEEN.update();
       renderer.render(scene, camera);
     };
 
