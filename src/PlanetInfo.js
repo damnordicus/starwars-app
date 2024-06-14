@@ -111,7 +111,7 @@ const PlanetInfo = ({ planetId, setShowPlanetInfo, showPlanetInfo }) => {
       <h3>Movies:</h3>
       <ul>
         {movies.length === 0 && <li>N/A...</li>}{" "}
-        {/* // Show "N/A..." if there are no characters or data is still loading */}
+        {/* // Show "N/A..." if there are no movies or data is still loading */}
         {movies.map((movie, index) => (
           <li key={index}>{movie.title}</li>
         ))}
