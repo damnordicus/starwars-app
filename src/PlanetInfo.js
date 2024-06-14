@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 const PlanetInfo = ({ planetId, setShowPlanetInfo, showPlanetInfo }) => {
   const [planetData, setPlanetData] = useState(null);
   const [characters, setCharacters] = useState([]); // Declare state for characters
+  const [movies, setMovies] = useState([]) //Declaring state for movies
 
   useEffect(() => {
     if (planetId) {
@@ -21,9 +22,21 @@ const PlanetInfo = ({ planetId, setShowPlanetInfo, showPlanetInfo }) => {
           Promise.all(characterPromises).then((charactersData) =>
             setCharacters(charactersData)
           );
+
+          //fetch movie data
+          const moviePromises = data.films.map((url) =>
+            fetch(url).then((res) => res.json())
+          );
+          // wait for all movie fetches to complete
+          Promise.all(moviePromises).then((moviesData) =>
+            setMovies(moviesData)
+          );
         });
     }
   }, [planetId]);
+
+
+
 
   if (planetData === null) {
     return <p>...Loading</p>;
@@ -92,6 +105,19 @@ const PlanetInfo = ({ planetId, setShowPlanetInfo, showPlanetInfo }) => {
           <li key={index}>{character.name}</li>
         ))}
       </ul>
+
+
+
+      <h3>Movies:</h3>
+      <ul>
+        {movies.length === 0 && <li>N/A...</li>}{" "}
+        {/* // Show "N/A..." if there are no characters or data is still loading */}
+        {movies.map((movie, index) => (
+          <li key={index}>{movie.title}</li>
+        ))}
+      </ul>
+
+
     </div>
   );
 };
