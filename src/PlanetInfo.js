@@ -63,6 +63,9 @@ const PlanetInfo = ({ planetId, setShowPlanetInfo, showPlanetInfo }) => {
         opacity: 0.9,
         borderRadius: "8px",
         zIndex: 1000,
+
+        maxHeight: "80vh", // Maximum height of the dialog box
+        overflowY: "auto", // Enable vertical scrolling if content exceeds max height
       }}
     >
 
