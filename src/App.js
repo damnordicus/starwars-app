@@ -30,12 +30,11 @@ const App = () => {
   return (
     <>
       <div>
-        {!loading && <Header />}
+        {!loading && <Header planetDatas={planetDatas} />}
         {!loading && (
           <ThreeScene
             onPlanetClick={handlePlanetClick}
             planetDatas={planetDatas}
-            planetNames={["test1", "test2", "test3", "test4", "test5"]}
           />
         )}
         {showPlanetInfo && (

@@ -1,12 +1,19 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./Header.css";
 import appLogo from "./app-logo.png";
+import HandleButtonClick from "./ThreeScene.js";
 
-function Header(
-  {
-    /*Array of Planet Objects, names to be used to populate option list */
-  }
-) {
+function Header({
+  planetDatas,
+  /*Array of Planet Objects, names to be used to populate option list */
+}) {
+  useEffect(() => {
+    console.log(planetDatas);
+  });
+
+  //NAvigate onclick to planet
+  // set camera planets[index].position
+
   return (
     <div className="header">
       <div>
@@ -15,24 +22,13 @@ function Header(
       <div className="nav-planets">
         <label>Choose a planet:</label>
         <select className="select" id="planets" name="planets">
-          <option className="options" value="mun">
-            mun
-          </option>
-          <option className="options" value="sol">
-            sol
-          </option>
-          <option className="options" value="ya motha">
-            ya motha
-          </option>
-          <option className="options" value="Mars">
-            Mars
-          </option>
-          {/* Make this section of options dynamic based on the planet prop passed in:
-            Something like:
-              planets.map(
-              <option value={planet.name}>{planet.name}</option>)
-
-          */}
+          {planetDatas.map((index) => {
+            return (
+              <option className="options" value={index.name}>
+                {index.name}
+              </option>
+            );
+          })}
         </select>
       </div>
       <div className="nav-movies-characters">
