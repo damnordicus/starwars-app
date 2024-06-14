@@ -85,6 +85,7 @@ const PlanetInfo = ({ planetId, setShowPlanetInfo, showPlanetInfo }) => {
 
 
       <h2>{planetData.name}</h2>
+      <img src={`/textures/${planetData.name}_description.png`} alt={`${planetData.name} Description`} />
       <p>Planet ID: {planetId}</p>
       <p>Orbital Period: {planetData.orbital_period} days</p>
       <p>Rotation Period: {planetData.rotation_period} hours</p>
