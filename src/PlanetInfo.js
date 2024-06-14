@@ -11,7 +11,6 @@ const PlanetInfo = ({ planetId, setShowPlanetInfo, showPlanetInfo }) => {
         .then((data) => {
           setPlanetData(data); // set the fetched plante data
 
-          // Hello Adam!
 
           // fetch character data
           const characterPromises = data.residents.map((url) =>
@@ -34,18 +33,44 @@ const PlanetInfo = ({ planetId, setShowPlanetInfo, showPlanetInfo }) => {
     setShowPlanetInfo(!showPlanetInfo);
   };
 
+  const handleCloseClick = (e) => {
+    e.stopPropagation(); // Prevent the click event from propagating to the parent element
+    setShowPlanetInfo(false);
+  };
+
   return (
     <div
-      onClick={handleClick}
+      onClick={(e) => e.stopPropagation()} // Prevent closing when clicking inside the dialog
       style={{
         position: "absolute",
         top: 120,
         right: "2%",
         padding: "20px",
         backgroundColor: "#333",
-        opacity: 0.7,
+        opacity: 0.9,
+        borderRadius: "8px",
+        zIndex: 1000,
       }}
     >
+
+      <button
+        onClick={handleCloseClick}
+        style={{
+          position: "absolute",
+          top: "5px",
+          right: "5px",
+          backgroundColor: "transparent",
+          border: "none",
+          color: "white",
+          fontSize: "20px",
+          cursor: "pointer",
+        }}
+      >
+        ×
+      </button>
+
+
+
       <h2>{planetData.name}</h2>
       <p>Planet ID: {planetId}</p>
       <p>Orbital Period: {planetData.orbital_period} days</p>
