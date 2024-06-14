@@ -5,7 +5,7 @@ import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 import * as TWEEN from "tween";
 import "./ThreeScene.css";
 
-const ThreeScene = ({ onPlanetClick, planetDatas, planetNames }) => {
+const ThreeScene = ({ onPlanetClick, planetDatas, menuPlanetSelected}) => {
   const mountRef = useRef(null);
   const [planet, setPlanet] = useState(null);
   const [planetData, setPlanetData] = useState([]);
@@ -19,10 +19,12 @@ const ThreeScene = ({ onPlanetClick, planetDatas, planetNames }) => {
   let selectedPlanet = null;
   let ring = null;
   let runOnce = 0;
+
   //
 
   // const planetTexture = planetInfo.texture;
   // const planetSize = planetInfo.radius;
+
 
   useEffect(() => {
     // Scene setup
@@ -117,7 +119,6 @@ const ThreeScene = ({ onPlanetClick, planetDatas, planetNames }) => {
         } else if (intersectObject.name === "") {
           secretCounter++;
           if (secretCounter === 5) {
-          if (secretCounter === 5) {
             alert("HMM....nothing to see here....");
           }
         }
@@ -125,8 +126,7 @@ const ThreeScene = ({ onPlanetClick, planetDatas, planetNames }) => {
     };
 
     function moveCameraToPlanet(planet) {
-      console.log(planet);
-
+      
       const planetWorldPosition = new THREE.Vector3();
       planet.getWorldPosition(planetWorldPosition);
       // Calculate the direction vector from the camera to the planet
@@ -206,7 +206,6 @@ const ThreeScene = ({ onPlanetClick, planetDatas, planetNames }) => {
 
     // You can create more planets dynamically in a loop if needed
     const numberOfPlanets = 10;
-    if (runOnce === 0) {
     if (runOnce === 0) {
       for (let i = 0; i < numberOfPlanets; i++) {
         let x = Math.random() * 500 - 50; // Random x position
@@ -304,36 +303,39 @@ const ThreeScene = ({ onPlanetClick, planetDatas, planetNames }) => {
     // Animation loop
     const animate = () => {
       requestAnimationFrame(animate);
-      for (let i = 0; i < planets.length; i++) {
-      for (let i = 0; i < planets.length; i++) {
-        planets[i].rotation.y += 0.002;
-      }
-      if (ring.visible) {
-      if (ring.visible) {
-        ring.lookAt(camera.position);
-      }
-      scene.rotation.y += 0.0001;
-      controls.update();
-      TWEEN.update();
-      renderer.render(scene, camera);
-    };
+        for (let i = 0; i < planets.length; i++) {
+          planets[i].rotation.y += 0.002;
+        }
+        if (ring.visible) {
+          if (ring.visible) {
+            ring.lookAt(camera.position);
+          }
+        }
+        scene.rotation.y += 0.0001;
+        controls.update();
+        TWEEN.update();
+        renderer.render(scene, camera);
+      };
 
-    const handleButtonClick = (planetId) => {
-      const planet = planets.find(p => p.planetId === planetId);
-      if (planet) {
-        moveCameraToPlanet(planet);
-      }
-    };
+      // const handleButtonClick = (planetId) => {
+      //   const planet = planets.find(p => p.planetId === planetId);
+      //   if (planet) {
+      //     moveCameraToPlanet(planet);
+      //   }
+      // };
 
-    animate();
+      animate();
 
-    return () => {
-      window.removeEventListener("mousemove", onMouseMove);
-      window.removeEventListener("click", onMouseClick);
-      window.removeEventListener("resize", onWindowResize);
-      mountRef.current.removeChild(renderer.domElement);
-    };
-  }, [sceneReady]);
+      return () => {
+        window.removeEventListener("mousemove", onMouseMove);
+        window.removeEventListener("click", onMouseClick);
+        window.removeEventListener("resize", onWindowResize);
+        mountRef.current.removeChild(renderer.domElement);
+      };
+
+    }, [sceneReady]);
+
+ 
 
 
   return <div ref={mountRef} style={{ position: 'relative' }} >

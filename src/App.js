@@ -8,6 +8,7 @@ const App = () => {
   const [selectedPlanetId, setSelectedPlanetId] = useState(null);
   const [planetDatas, setPlanetDatas] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [menuPlanetSelected, setMenuPlanetSelected] = useState(null);
 
   const handlePlanetClick = (input) => {
     setSelectedPlanetId(input);
@@ -30,11 +31,12 @@ const App = () => {
   return (
     <>
       <div>
-        {!loading && <Header planetDatas={planetDatas} />}
+        {!loading && <Header planetDatas={planetDatas} setMenuPlanetSelected={setMenuPlanetSelected} />}
         {!loading && (
           <ThreeScene
             onPlanetClick={handlePlanetClick}
             planetDatas={planetDatas}
+            menuPlanetSelected={menuPlanetSelected}
           />
         )}
         {showPlanetInfo && (
