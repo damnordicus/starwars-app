@@ -1,6 +1,7 @@
 import React from "react";
 import "./Header.css";
 import appLogo from "./app-logo.png";
+import ThreeScene, {handleButtonClick} from "./ThreeScene"
 
 function Header(
   {

@@ -4,7 +4,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  /* background: url(`${}.png`) no-repeat center center; */
+  background: url("../public/textures/cockpit.png") no-repeat center center;
   background-size: cover;
   pointer-events: none;
   z-index: 1;
