@@ -80,6 +80,10 @@
 
 [![Product Name Screen Shot][product-screenshot]](https://example.com)
 
+<a href="https://github.com/damnordicus/starwars-app">
+    <img src="./src/app-logo.png" alt="Logo" width="240" height="240";>
+  </a>
+
 Here's a blank template to get started: To avoid retyping too much info. Do a search and replace with your text editor for the following: `damnordicus`, `starwars-app`, `DELETE THIS`, `DELETE`, `DELETE`, `DELETE`, `Star Wars Universe Explorer`, `PLACE DESCRIPTION HERE`
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
