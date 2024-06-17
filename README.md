@@ -114,18 +114,17 @@ Things you need to use the software and how to install them.
 
 ### Installation
 
-1. _EDIT THIS SECTION_ Get a free API Key at [https://example.com](https://example.com)
-2. Clone the repo
+1. Clone the repo
    ```sh
    git clone https://github.com/damnordicus/starwars-app.git
    ```
-3. Install NPM packages
+2. Install NPM packages
    ```sh
    npm install
    ```
-4. _EDIT THIS SECTION_ Enter your API in `config.js`
-   ```js
-   const API_KEY = 'ENTER YOUR API';
+3. Run it!
+   ```
+   npm start
    ```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
