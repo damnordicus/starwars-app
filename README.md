@@ -32,7 +32,7 @@
 <h3 align="center">Star Wars Universe Explorer</h3>
 
   <p align="center">
-    PLACE DESCRIPTION HERE
+    A fun way to view a small part of the Star Wars Universe!
     <br />
     <a href="https://github.com/damnordicus/starwars-app"><strong>Explore the docs »</strong></a>
     <br />
@@ -92,7 +92,7 @@ An interactive view into the Star Wars universe that encourages you to check out
 ### Built With
 
 * [![React][React.js]][React-url]
-* [[Star Wars API][https://swapi.dev/]]
+* [Star Wars API][https://swapi.dev/]]
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
