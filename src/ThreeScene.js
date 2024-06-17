@@ -15,7 +15,7 @@ const ThreeScene = ({ onPlanetClick, planetDatas, menuPlanetSelected }) => {
   const [locationsList, setLocationsList] = useState([]);
   let secretCounter = 0;
 
-  let planetIdCounter = 0;
+  let planetID = -1;
   const raycaster = new THREE.Raycaster();
   const mouse = new THREE.Vector2();
   let selectedPlanet = null;
@@ -115,7 +115,7 @@ const ThreeScene = ({ onPlanetClick, planetDatas, menuPlanetSelected }) => {
         const intersectObject = intersects[0].object;
         console.log(intersectObject);
         if (intersectObject.planetId !== undefined) {
-          moveCameraToPlanet(intersectObject);
+          moveCameraToPlanet(intersectObject.planetId - 1);
           onPlanetClick(intersectObject.planetId);
         } else if (intersectObject.name === "") {
           secretCounter++;
@@ -126,10 +126,8 @@ const ThreeScene = ({ onPlanetClick, planetDatas, menuPlanetSelected }) => {
       }
     };
 
-    function moveCameraToPlanet(planet) {
-      if (typeof planet === THREE.Vector3) {
-        console.log("test");
-      }
+    function moveCameraToPlanet(planetId) {
+      let planet = planets[planetId];
 
       const planetWorldPosition = new THREE.Vector3();
       planet.getWorldPosition(planetWorldPosition);
@@ -375,6 +373,12 @@ const ThreeScene = ({ onPlanetClick, planetDatas, menuPlanetSelected }) => {
       mountRef.current.removeChild(renderer.domElement);
     };
   }, [sceneReady]);
+
+  useEffect(() => {
+    if (menuPlanetSelected) {
+      planetID = menuPlanetSelected;
+    }
+  }, [menuPlanetSelected]);
 
   return (
     <div ref={mountRef} style={{ position: "relative" }}>
