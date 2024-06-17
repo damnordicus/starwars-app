@@ -5,13 +5,14 @@ import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 import * as TWEEN from "tween";
 import "./ThreeScene.css";
 
-const ThreeScene = ({ onPlanetClick, planetDatas, menuPlanetSelected}) => {
+const ThreeScene = ({ onPlanetClick, planetDatas, menuPlanetSelected }) => {
   const mountRef = useRef(null);
   const [planet, setPlanet] = useState(null);
   const [planetData, setPlanetData] = useState([]);
   const planets = [];
   const [sceneReady, setSceneReady] = useState(false);
   const [planetLocation, setPlanetLocation] = useState([]);
+  const [locationsList, setLocationsList] = useState([]);
   let secretCounter = 0;
 
   let planetID = -1;
@@ -25,7 +26,6 @@ const ThreeScene = ({ onPlanetClick, planetDatas, menuPlanetSelected}) => {
 
   // const planetTexture = planetInfo.texture;
   // const planetSize = planetInfo.radius;
-
 
   useEffect(() => {
     // Scene setup
@@ -72,7 +72,6 @@ const ThreeScene = ({ onPlanetClick, planetDatas, menuPlanetSelected}) => {
 
     const starVertices = [];
     for (let i = 0; i < 10000; i++) {
-
       const x = THREE.MathUtils.randFloatSpread(2000);
       const y = THREE.MathUtils.randFloatSpread(2000);
       const z = THREE.MathUtils.randFloatSpread(2000);
@@ -111,13 +110,13 @@ const ThreeScene = ({ onPlanetClick, planetDatas, menuPlanetSelected}) => {
       raycaster.setFromCamera(mouse, camera);
       const intersects = raycaster.intersectObjects(scene.children, true);
 
-      if (intersects.length > 0) {//&& intersects[0].object === typeof(Mesh)) {
+      if (intersects.length > 0) {
+        //&& intersects[0].object === typeof(Mesh)) {
         const intersectObject = intersects[0].object;
         console.log(intersectObject);
         if (intersectObject.planetId !== undefined) {
           moveCameraToPlanet(intersectObject.planetId - 1);
           onPlanetClick(intersectObject.planetId);
-
         } else if (intersectObject.name === "") {
           secretCounter++;
           if (secretCounter === 5) {
@@ -129,11 +128,13 @@ const ThreeScene = ({ onPlanetClick, planetDatas, menuPlanetSelected}) => {
 
     function moveCameraToPlanet(planetId) {
       let planet = planets[planetId];
-      
+
       const planetWorldPosition = new THREE.Vector3();
       planet.getWorldPosition(planetWorldPosition);
       // Calculate the direction vector from the camera to the planet
-      const direction = new THREE.Vector3().subVectors(planetWorldPosition, camera.position).normalize();
+      const direction = new THREE.Vector3()
+        .subVectors(planetWorldPosition, camera.position)
+        .normalize();
 
       // Position the camera 100 units away from the planet
       const distance = 50 + planet.radius;
@@ -143,7 +144,14 @@ const ThreeScene = ({ onPlanetClick, planetDatas, menuPlanetSelected}) => {
       );
 
       new TWEEN.Tween(camera.position)
-        .to({ x: newCameraPosition.x, y: newCameraPosition.y, z: newCameraPosition.z }, 2000)
+        .to(
+          {
+            x: newCameraPosition.x,
+            y: newCameraPosition.y,
+            z: newCameraPosition.z,
+          },
+          2000
+        )
         .easing(TWEEN.Easing.Quadratic.Out)
         .onUpdate(() => {
           camera.lookAt(planetWorldPosition);
@@ -155,13 +163,19 @@ const ThreeScene = ({ onPlanetClick, planetDatas, menuPlanetSelected}) => {
         .start();
 
       new TWEEN.Tween(controls.target)
-        .to({ x: planetWorldPosition.x, y: planetWorldPosition.y, z: planetWorldPosition.z }, 2000)
+        .to(
+          {
+            x: planetWorldPosition.x,
+            y: planetWorldPosition.y,
+            z: planetWorldPosition.z,
+          },
+          2000
+        )
         .easing(TWEEN.Easing.Quadratic.Out)
         .onUpdate(() => {
           controls.update();
         })
         .start();
-
 
       // Update the camera position and make it look at the planet
       camera.position.copy(newCameraPosition);
@@ -209,24 +223,37 @@ const ThreeScene = ({ onPlanetClick, planetDatas, menuPlanetSelected}) => {
 
     // You can create more planets dynamically in a loop if needed
     const numberOfPlanets = 10;
+    let planetLocations = [];
+    let locationVector = [];
+
     if (runOnce === 0) {
       for (let i = 0; i < numberOfPlanets; i++) {
         let x = Math.random() * 500 - 50; // Random x position
         let y = Math.random() * 500 - 50; // Random y position
         let z = Math.random() * 500 - 100; // Random z position
 
-        let radius = (parseInt(planetDatas[i].diameter) / 1000);
+        let radius = parseInt(planetDatas[i].diameter) / 1000;
 
-        
         x += radius;
         y += radius;
         z += radius;
 
-        let temp = new THREE.Vector3(x, y, z);
+        // below is captuing planet data to list selection teleportation - Kevin
+        locationVector = [x, y, z];
+        planetLocations.push(locationVector);
 
-        setPlanetLocation(prev => [...prev, temp]);
+        // let temp = new THREE.Vector3(x, y, z);
 
-        const planet = createPlanet(i + 1, `${process.env.PUBLIC_URL}/textures/${planetDatas[i].name}.jpg`, radius, 32, 32, { x, y, z });
+        // setPlanetLocation((prev) => [...prev, temp]);
+
+        const planet = createPlanet(
+          i + 1,
+          `${process.env.PUBLIC_URL}/textures/${planetDatas[i].name}.jpg`,
+          radius,
+          32,
+          32,
+          { x, y, z }
+        );
         //const planet = createPlanet(planetTexture, planetSize, 32, 32, { x, y, z });
         //setPlanetData(prev => [...prev, planet]);
         setPlanet(planet);
@@ -234,6 +261,8 @@ const ThreeScene = ({ onPlanetClick, planetDatas, menuPlanetSelected}) => {
       runOnce++;
     }
 
+    // below is setting status for planet data to list selection teleportation - Kevin
+    setLocationsList(planetLocations);
 
     const ringGeometry = new THREE.RingGeometry(11.5, 12, 100);
     const ringMaterial = new THREE.MeshBasicMaterial({
@@ -243,7 +272,6 @@ const ThreeScene = ({ onPlanetClick, planetDatas, menuPlanetSelected}) => {
     ring = new THREE.Mesh(ringGeometry, ringMaterial);
     ring.visible = false;
     scene.add(ring);
-
 
     // DOM element for displaying planet ID
     const planetIdLabel = document.createElement("div");
@@ -270,26 +298,32 @@ const ThreeScene = ({ onPlanetClick, planetDatas, menuPlanetSelected}) => {
 
           const planetRadius = intersectedObject.radius;
           ring.geometry.dispose();
-          ring.geometry = new THREE.RingGeometry(planetRadius * 1.1, planetRadius * 1.2, 100);
+          ring.geometry = new THREE.RingGeometry(
+            planetRadius * 1.1,
+            planetRadius * 1.2,
+            100
+          );
 
           ring.visible = true;
 
           // Display the planet ID
-          planetIdLabel.style.display = 'block';
+          planetIdLabel.style.display = "block";
           planetIdLabel.style.left = `${event.clientX + 10}px`;
           planetIdLabel.style.top = `${event.clientY + 10}px`;
 
-          planetIdLabel.innerHTML = `Planet ID: ${planetDatas[intersectedObject.planetId - 1].name}`;
+          planetIdLabel.innerHTML = `Planet ID: ${
+            planetDatas[intersectedObject.planetId - 1].name
+          }`;
 
           selectedPlanet = intersectedObject;
         } else {
           ring.visible = false;
-          planetIdLabel.style.display = 'none';
+          planetIdLabel.style.display = "none";
           selectedPlanet = null;
         }
       } else {
         ring.visible = false;
-        planetIdLabel.style.display = 'none';
+        planetIdLabel.style.display = "none";
         selectedPlanet = null;
       }
     };
@@ -309,48 +343,48 @@ const ThreeScene = ({ onPlanetClick, planetDatas, menuPlanetSelected}) => {
     // Animation loop
     const animate = () => {
       requestAnimationFrame(animate);
-        for (let i = 0; i < planets.length; i++) {
-          planets[i].rotation.y += 0.002;
-        }
+      for (let i = 0; i < planets.length; i++) {
+        planets[i].rotation.y += 0.002;
+      }
+      if (ring.visible) {
         if (ring.visible) {
-          if (ring.visible) {
-            ring.lookAt(camera.position);
-          }
+          ring.lookAt(camera.position);
         }
-        scene.rotation.y += 0.0001;
-        controls.update();
-        TWEEN.update();
-        renderer.render(scene, camera);
-      };
+      }
+      scene.rotation.y += 0.0001;
+      controls.update();
+      TWEEN.update();
+      renderer.render(scene, camera);
+    };
 
-      // const handleButtonClick = (planetId) => {
-      //   const planet = planets.find(p => p.planetId === planetId);
-      //   if (planet) {
-      //     moveCameraToPlanet(planet);
-      //   }
-      // };
+    // const handleButtonClick = (planetId) => {
+    //   const planet = planets.find(p => p.planetId === planetId);
+    //   if (planet) {
+    //     moveCameraToPlanet(planet);
+    //   }
+    // };
 
-      animate();
+    animate();
 
-      return () => {
-        window.removeEventListener("mousemove", onMouseMove);
-        window.removeEventListener("click", onMouseClick);
-        window.removeEventListener("resize", onWindowResize);
-        mountRef.current.removeChild(renderer.domElement);
-      };
+    return () => {
+      window.removeEventListener("mousemove", onMouseMove);
+      window.removeEventListener("click", onMouseClick);
+      window.removeEventListener("resize", onWindowResize);
+      mountRef.current.removeChild(renderer.domElement);
+    };
+  }, [sceneReady]);
 
-    }, [sceneReady]);
+  useEffect(() => {
+    if (menuPlanetSelected) {
+      planetID = menuPlanetSelected;
+    }
+  }, [menuPlanetSelected]);
 
-    useEffect(() => {
-        if(menuPlanetSelected){
-          planetID = menuPlanetSelected;
-        }
-    }, [menuPlanetSelected]);
-
-
-  return <div ref={mountRef} style={{ position: 'relative' }} >
-    <div className="overlay"></div>
-  </div>;
+  return (
+    <div ref={mountRef} style={{ position: "relative" }}>
+      <div className="overlay"></div>
+    </div>
+  );
 };
 //update
 export default ThreeScene;

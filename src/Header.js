@@ -6,7 +6,7 @@ import appLogo from "./app-logo.png";
 
 function Header({
   planetDatas,
-  setMenuPlanetSelected
+  setMenuPlanetSelected,
   /*Array of Planet Objects, names to be used to populate option list */
 }) {
   const navigate = useNavigate();
@@ -49,11 +49,10 @@ function Header({
         <label>Choose a planet:</label>
         <select className="select" id="planets" name="planets" onChange={handlePlanetSelection}>
           {planetDatas.map((index) => (
-              <option className="options" value={index.name} >
-                {index.name}
-              </option>
-            ))
-          }
+            <option className="options" value={index}>
+              {index.name}
+            </option>
+          ))}
         </select>
       </div>
       <div className="nav-movies-characters">
