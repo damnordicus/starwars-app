@@ -82,6 +82,7 @@
 <a href="https://github.com/damnordicus/starwars-app">
     <img src="./src/app-logo.png" alt="Logo" width="240" height="240";>
   </a>
+
 An interactive view into the Star Wars universe that encourages you to check out some of the planets, and see what films they're in and see what characters are on them. 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
