@@ -168,9 +168,9 @@ _EDIT THIS SECTION_
 
 ## Future Updates
 
-- The ability to fast travel (camera movement) to the planet selected from the header.
-- Allow user to click on the films and characters to get more detailed information from the selected planet pop up.
-- Ability to view all of the Starwars planets instead of just the first 10.
+- The ability to fast-travel (camera movement) to the planet selected from the header.
+- Allow users to click on the films and characters to get more detailed information from the selected planet pop-up.
+- Expand the amount of rendered planets beyond the 10 currently featured.
 
 See the [open issues](https://github.com/damnordicus/starwars-app/issues) for a full list of proposed features (and known issues).
 
@@ -186,9 +186,9 @@ See the [open issues](https://github.com/damnordicus/starwars-app/issues) for a 
 <!-- CONTRIBUTING -->
 ## Contributing
 
-Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
+Contributions make the open-source community an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
 
-If you have a suggestion that would make this better, please fork the repo and create a pull request. You can also simply open an issue with the tag "enhancement".
+If you have a suggestion for improving this, please forward the repo and create a pull request. You can also simply open an issue with the tag "enhancement".
 Don't forget to give the project a star! Thanks again!
 
 1. Fork the Project
