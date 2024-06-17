@@ -56,7 +56,7 @@ function Header({
         </select>
       </div>
       <div className="nav-movies-characters">
-        <Link to="/Characters" ><button className="cool-button">Characters</button></Link>
+        <Link to="/CharacterList" ><button className="cool-button">Characters</button></Link>
         {/* This will navigate to a homepage that lists all the characters */}
         <Link to="/Movies"><button className="cool-button">Movies</button></Link>
         {/* This will navigate to a homepage that lists all the movies */}

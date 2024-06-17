@@ -4,6 +4,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import ThreeScene from "./ThreeScene";
 import PlanetInfo from "./PlanetInfo"; // This will be our UI component to show on click
 import Header from "./Header.js"; // This will be <self-explanatory>
+import CharacterList from "./CharacterList.js";
 
 
 
@@ -30,13 +31,11 @@ const App = () => {
     fetchData();
   }, []);
 
-  //FETCH - Tiffany
-  //Test
   return (
     <>
       <Routes>
-        {/* <Route path="/Movies" element={<Movies />}/>
-        <Route path="/Characters" element={<Characters />}/> */}
+        {/* <Route path="/Movies" element={<Movies />}/> */}
+        <Route path="/CharacterList" element={<CharacterList />}/>
         <Route path="/Planets/:planetName" element={<PlanetInfo planetDatas={planetDatas} setShowPlanetInfo={setShowPlanetInfo} showPlanetInfo={showPlanetInfo}/>} />
         {/* <Route path="/a" element={<ThreeScene />} /> */}
       </Routes>
