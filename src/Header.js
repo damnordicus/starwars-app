@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { useNavigate, Link } from 'react-router-dom';
 import "./Header.css";
 import appLogo from "./app-logo.png";
 //import {handleButtonClick} from "./ThreeScene.js";
@@ -8,7 +9,13 @@ function Header({
   setMenuPlanetSelected
   /*Array of Planet Objects, names to be used to populate option list */
 }) {
-  
+  const navigate = useNavigate();
+
+  const handlePlanetSelection = (event) => {
+      const planetName = event.target.value;
+      navigate(`/Planets/${planetName}`);
+      setMenuPlanetSelected(planetName);
+  }
 
   //NAvigate onclick to planet
   // set camera planets[index].position
@@ -40,7 +47,7 @@ function Header({
       </div>
       <div className="nav-planets">
         <label>Choose a planet:</label>
-        <select className="select" id="planets" name="planets" onChange={handleChange}>
+        <select className="select" id="planets" name="planets" onChange={handlePlanetSelection}>
           {planetDatas.map((index) => (
               <option className="options" value={index.name} >
                 {index.name}
@@ -50,9 +57,9 @@ function Header({
         </select>
       </div>
       <div className="nav-movies-characters">
-        <button className="cool-button">characters</button>
+        <Link to="/Characters" ><button className="cool-button">Characters</button></Link>
         {/* This will navigate to a homepage that lists all the characters */}
-        <button className="cool-button">movies</button>
+        <Link to="/Movies"><button className="cool-button">Movies</button></Link>
         {/* This will navigate to a homepage that lists all the movies */}
       </div>
       <h1>STAR WARS APP</h1>

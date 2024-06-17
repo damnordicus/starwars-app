@@ -1,7 +1,11 @@
 import React, { useEffect, useState } from "react";
+import ReactDOM from "react-dom/client";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import ThreeScene from "./ThreeScene";
 import PlanetInfo from "./PlanetInfo"; // This will be our UI component to show on click
 import Header from "./Header.js"; // This will be <self-explanatory>
+
+
 
 const App = () => {
   const [showPlanetInfo, setShowPlanetInfo] = useState(false);
@@ -29,7 +33,12 @@ const App = () => {
   //FETCH - Tiffany
   //Test
   return (
-    <>
+    <BrowserRouter>
+      <Routes>
+        {/* <Route path="/Movies" element={<Movies />}/>
+        <Route path="/Characters" element={<Characters />}/> */}
+        <Route path="/Planets/:planetName" element={<PlanetInfo planetDatas={planetDatas} setShowPlanetInfo={setShowPlanetInfo} showPlanetInfo={showPlanetInfo}/>} />
+      </Routes>
       <div>
         {!loading && <Header planetDatas={planetDatas} setMenuPlanetSelected={setMenuPlanetSelected} />}
         {!loading && (
@@ -47,7 +56,7 @@ const App = () => {
           />
         )}
       </div>
-    </>
+    </BrowserRouter>
   );
 };
 

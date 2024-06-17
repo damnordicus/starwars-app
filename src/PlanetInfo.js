@@ -1,10 +1,31 @@
 import React, { useState, useEffect } from "react";
+import { useParams } from 'react-router-dom';
 
-const PlanetInfo = ({ planetId, setShowPlanetInfo, showPlanetInfo }) => {
+
+
+const PlanetInfo = ({ planetId, setShowPlanetInfo, showPlanetInfo, planetDatas }) => {
+  const{ planetName } = useParams();
+
+ // const id = getPlanetIdByName(planetName, planetDatas);
+
+  let planData = 0;
+  if(planetDatas && planetName){
+    for(let i = 0; i < planetDatas.length; i++){
+      if(planetDatas[i].name === planetName){
+         planData = i;
+      }
+    }
+  }
+
   const [planetData, setPlanetData] = useState(null);
   const [characters, setCharacters] = useState([]); // Declare state for characters
   const [movies, setMovies] = useState([]) //Declaring state for movies
 
+  
+
+if(planData){
+    planetId = planData + 1;
+  }
   useEffect(() => {
     if (planetId) {
       fetch(`https://swapi.dev/api/planets/${planetId}/`)
@@ -48,6 +69,9 @@ const PlanetInfo = ({ planetId, setShowPlanetInfo, showPlanetInfo }) => {
 
   const handleCloseClick = (e) => {
     e.stopPropagation(); // Prevent the click event from propagating to the parent element
+    if(planetName){
+      
+    }
     setShowPlanetInfo(false);
   };
 
