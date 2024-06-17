@@ -78,8 +78,6 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
-
 <a href="https://github.com/damnordicus/starwars-app">
     <img src="./src/app-logo.png" alt="Logo" width="240" height="240";>
   </a>
