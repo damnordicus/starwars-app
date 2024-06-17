@@ -165,6 +165,12 @@ _EDIT THIS SECTION_
     - [ ] Movies Screen
     - [ ] Characters Screen
 
+## Future Updates
+
+- The ability to fast travel (camera movement) to the planet selected from the header.
+- Allow user to click on the films and characters to get more detailed information from the selected planet pop up.
+- Ability to view all of the Starwars planets instead of just the first 10.
+
 See the [open issues](https://github.com/damnordicus/starwars-app/issues) for a full list of proposed features (and known issues).
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
