@@ -83,7 +83,7 @@
     <img src="./src/app-logo.png" alt="Logo" width="240" height="240";>
   </a>
 
-An interactive view into the Star Wars universe that encourages you to check out some of the planets, and see what films they're in and see what characters are on them. 
+An interactive view into the Star Wars universe that encourages you to check out some of the planets to see what films they're featured in and what characters visited them. 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -134,17 +134,17 @@ Things you need to use the software and how to install them.
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-Using your mouse, you control the ship by clicking and holding the left or right mouse buttons, along with using the scroll ability.
+Using your mouse, you control the ship by clicking and holding the left or right mouse buttons and using the scroll ability.
 
-Left mouse button (click and hold): allows you to look all around you.
+Left mouse button (click and hold): allows you to look around.
 Right mouse button (click and hold): lets you slide up/down/left/right while facing the same direction.
 Scroll in/out: zoom in/out.
 
-If there's a planet visible on your screen, you can put your mouse cursor over it, and it's name will show up with a ring surrounding the planet to show which planet is currently in question. 
+If there's a planet visible on your screen, you can put your mouse cursor over it, and its name will show up with a ring surrounding the planet to show which planet is currently in question. 
 
-Clicking on a planet will automatically pilot the ship directly to the planet and stop leaving the planet in the center of your screen. During this travel, a pop up will show all of the details of that planet, including the characters from that planet, and the films which that planet has been in.
+Clicking on a planet will automatically pilot the ship directly to the planet and stop leaving the planet in the center of your screen. During this travel, a pop-up will show all of the details of that planet, including the characters from that planet and the films that the planet has featured in.
 
-If you don't want to travel with the ship, the header bar has a drop down to allow you to choose a planet, and it will show you the same pop up with information on that planet, it just won't have the camera travelling there at this time. 
+If you don't want to travel with the ship, the header bar has a drop-down to allow you to choose a planet, and it will show you the same pop-up with information on that planet.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -155,15 +155,16 @@ If you don't want to travel with the ship, the header bar has a drop down to all
 
 _EDIT THIS SECTION_
 
-- [ ] THREE.js implementation
-- [ ] Galactic View Creation
+- [x] THREE.js implementation
+- [x] Galactic View Creation
 - [ ] Nav Component Creation
-    - [ ] Camera Position Controls (THREE.js)
-    - [ ] Select Bar
-- [ ] Info Component Creation
-    - [ ] Planet Info
-    - [ ] Movies Screen
-    - [ ] Characters Screen
+    - [x] Select Bar
+    - [x] Flight Controls
+    - [ ] Camera Position Controls (discussed below)
+- [x] Info Component Creation
+    - [x] Planet Info
+    - [x] Movies Screen
+    - [x] Characters Screen
 
 ## Future Updates
 
