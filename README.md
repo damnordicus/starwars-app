@@ -32,7 +32,7 @@
 <h3 align="center">Star Wars Universe Explorer</h3>
 
   <p align="center">
-    search and deplace DESC
+    PLACE DESCRIPTION HERE
     <br />
     <a href="https://github.com/damnordicus/starwars-app"><strong>Explore the docs »</strong></a>
     <br />
@@ -80,7 +80,7 @@
 
 [![Product Name Screen Shot][product-screenshot]](https://example.com)
 
-Here's a blank template to get started: To avoid retyping too much info. Do a search and replace with your text editor for the following: `damnordicus`, `starwars-app`, `DELETE THIS`, `DELETE`, `DELETE`, `DELETE`, `Star Wars Universe Explorer`, `search and deplace DESC`
+Here's a blank template to get started: To avoid retyping too much info. Do a search and replace with your text editor for the following: `damnordicus`, `starwars-app`, `DELETE THIS`, `DELETE`, `DELETE`, `DELETE`, `Star Wars Universe Explorer`, `PLACE DESCRIPTION HERE`
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
