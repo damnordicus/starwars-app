@@ -33,11 +33,12 @@ const App = () => {
   //FETCH - Tiffany
   //Test
   return (
-    <BrowserRouter>
+    <>
       <Routes>
         {/* <Route path="/Movies" element={<Movies />}/>
         <Route path="/Characters" element={<Characters />}/> */}
         <Route path="/Planets/:planetName" element={<PlanetInfo planetDatas={planetDatas} setShowPlanetInfo={setShowPlanetInfo} showPlanetInfo={showPlanetInfo}/>} />
+        {/* <Route path="/a" element={<ThreeScene />} /> */}
       </Routes>
       <div>
         {!loading && <Header planetDatas={planetDatas} setMenuPlanetSelected={setMenuPlanetSelected} />}
@@ -56,7 +57,7 @@ const App = () => {
           />
         )}
       </div>
-    </BrowserRouter>
+    </>
   );
 };
 

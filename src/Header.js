@@ -49,7 +49,7 @@ function Header({
         <label>Choose a planet:</label>
         <select className="select" id="planets" name="planets" onChange={handlePlanetSelection}>
           {planetDatas.map((index) => (
-            <option className="options" value={index}>
+            <option className="options" value={index.name}>
               {index.name}
             </option>
           ))}

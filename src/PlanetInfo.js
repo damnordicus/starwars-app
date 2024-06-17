@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from 'react-router-dom';
+import { Navigate, useParams } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 
 
 
 const PlanetInfo = ({ planetId, setShowPlanetInfo, showPlanetInfo, planetDatas }) => {
   const{ planetName } = useParams();
-
+  const navigate = useNavigate();
  // const id = getPlanetIdByName(planetName, planetDatas);
 
   let planData = 0;
@@ -70,7 +71,7 @@ if(planData){
   const handleCloseClick = (e) => {
     e.stopPropagation(); // Prevent the click event from propagating to the parent element
     if(planetName){
-      
+        navigate("/");
     }
     setShowPlanetInfo(false);
   };
