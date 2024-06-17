@@ -25,7 +25,7 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a href="https://github.com/damnnordicus/starwars-app">
+  <a href="https://github.com/damnordicus/starwars-app">
     <img src="app-logo.png" alt="Logo" width="80" height="80">
   </a>
 
@@ -34,14 +34,14 @@
   <p align="center">
     search and deplace DESC
     <br />
-    <a href="https://github.com/damnnordicus/starwars-app"><strong>Explore the docs »</strong></a>
+    <a href="https://github.com/damnordicus/starwars-app"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/damnnordicus/starwars-app">View Demo</a>
+    <a href="https://github.com/damnordicus/starwars-app">View Demo</a>
     ·
-    <a href="https://github.com/damnnordicus/starwars-app/issues/new?labels=bug&template=bug-report---.md">Report Bug</a>
+    <a href="https://github.com/damnordicus/starwars-app/issues/new?labels=bug&template=bug-report---.md">Report Bug</a>
     ·
-    <a href="https://github.com/damnnordicus/starwars-app/issues/new?labels=enhancement&template=feature-request---.md">Request Feature</a>
+    <a href="https://github.com/damnordicus/starwars-app/issues/new?labels=enhancement&template=feature-request---.md">Request Feature</a>
   </p>
 </div>
 
@@ -80,7 +80,7 @@
 
 [![Product Name Screen Shot][product-screenshot]](https://example.com)
 
-Here's a blank template to get started: To avoid retyping too much info. Do a search and replace with your text editor for the following: `damnnordicus`, `starwars-app`, `DELETE THIS`, `DELETE`, `DELETE`, `DELETE`, `Star Wars Universe Explorer`, `search and deplace DESC`
+Here's a blank template to get started: To avoid retyping too much info. Do a search and replace with your text editor for the following: `damnordicus`, `starwars-app`, `DELETE THIS`, `DELETE`, `DELETE`, `DELETE`, `Star Wars Universe Explorer`, `search and deplace DESC`
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -114,7 +114,7 @@ This is an example of how to list things you need to use the software and how to
 1. Get a free API Key at [https://example.com](https://example.com)
 2. Clone the repo
    ```sh
-   git clone https://github.com/damnnordicus/starwars-app.git
+   git clone https://github.com/damnordicus/starwars-app.git
    ```
 3. Install NPM packages
    ```sh
@@ -148,7 +148,7 @@ _For more examples, please refer to the [Documentation](https://example.com)_
 - [ ] Feature 3
     - [ ] Nested Feature
 
-See the [open issues](https://github.com/damnnordicus/starwars-app/issues) for a full list of proposed features (and known issues).
+See the [open issues](https://github.com/damnordicus/starwars-app/issues) for a full list of proposed features (and known issues).
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -186,7 +186,7 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 
 Your Name - [@DELETE THIS](https://twitter.com/DELETE THIS) - DELETE@DELETE.com
 
-Project Link: [https://github.com/damnnordicus/starwars-app](https://github.com/damnnordicus/starwars-app)
+Project Link: [https://github.com/damnordicus/starwars-app](https://github.com/damnordicus/starwars-app)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -205,16 +205,16 @@ Project Link: [https://github.com/damnnordicus/starwars-app](https://github.com/
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[contributors-shield]: https://img.shields.io/github/contributors/damnnordicus/starwars-app.svg?style=for-the-badge
-[contributors-url]: https://github.com/damnnordicus/starwars-app/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/damnnordicus/starwars-app.svg?style=for-the-badge
-[forks-url]: https://github.com/damnnordicus/starwars-app/network/members
-[stars-shield]: https://img.shields.io/github/stars/damnnordicus/starwars-app.svg?style=for-the-badge
-[stars-url]: https://github.com/damnnordicus/starwars-app/stargazers
-[issues-shield]: https://img.shields.io/github/issues/damnnordicus/starwars-app.svg?style=for-the-badge
-[issues-url]: https://github.com/damnnordicus/starwars-app/issues
-[license-shield]: https://img.shields.io/github/license/damnnordicus/starwars-app.svg?style=for-the-badge
-[license-url]: https://github.com/damnnordicus/starwars-app/blob/master/LICENSE.txt
+[contributors-shield]: https://img.shields.io/github/contributors/damnordicus/starwars-app.svg?style=for-the-badge
+[contributors-url]: https://github.com/damnordicus/starwars-app/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/damnordicus/starwars-app.svg?style=for-the-badge
+[forks-url]: https://github.com/damnordicus/starwars-app/network/members
+[stars-shield]: https://img.shields.io/github/stars/damnordicus/starwars-app.svg?style=for-the-badge
+[stars-url]: https://github.com/damnordicus/starwars-app/stargazers
+[issues-shield]: https://img.shields.io/github/issues/damnordicus/starwars-app.svg?style=for-the-badge
+[issues-url]: https://github.com/damnordicus/starwars-app/issues
+[license-shield]: https://img.shields.io/github/license/damnordicus/starwars-app.svg?style=for-the-badge
+[license-url]: https://github.com/damnordicus/starwars-app/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/DELETE
 [product-screenshot]: images/screenshot.png
