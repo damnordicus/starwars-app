@@ -179,9 +179,9 @@ See the [open issues](https://github.com/damnordicus/starwars-app/issues) for a 
 <!-- Lessons -->
 ## Lessons
 
-### Passing commands to Three.js from outside files
+### Passing commands to Three.js from other functional component files
   Our application's 3D landscape visuals and controls were built upon the THREE.js library. This was extremely useful as it provided a playground to operate creatively and build our galaxy. As seen while navigating through our rendered space, the camera controls in the library provided us with the ability to accomplish engaging and intuitive visual feats for the user. We ran into issues when exploring implementations of camera positioning from outside sources. We implemented the THREE.js library in our three.js file by adding functionality to a large-use effect rendered on start-up. This single render ensured the user wouldn't be randomly teleported 'back to start' because of a dependency update. This implementation ended up constraining our abilities and would be the case for a large refactor had we had more time.
-  - The feature which identified this issue is the planets dropdown tab in the header. Our vision was that upon clicking a planet, the user would be teleported to the view of that associated planet. Following 3-4 hours of pair programming, we were unable to find a solution where we could 1) identify the select element changed value, 2) extract that value to pass it to three.js, and 3) update the camera position based on the randomly generated position of our planets on startup, step 3 being the problem child.
+  - The feature that identified this issue is the planets dropdown tab in the header. Our vision was that upon clicking a planet, the user would be teleported to the view of that associated planet. Following 3-4 hours of pair programming, we were unable to find a solution where we could 1) identify the select element changed value, 2) extract that value to pass it to three.js, and 3) update the camera position based on the randomly generated position of our planets on startup, step 3 being the problem child.
 
 <!-- CONTRIBUTING -->
 ## Contributing
