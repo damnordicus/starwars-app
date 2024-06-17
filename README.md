@@ -178,7 +178,9 @@ See the [open issues](https://github.com/damnordicus/starwars-app/issues) for a 
 <!-- Lessons -->
 ## Lessons
 
-### Camera implementation issue in useEffect of ThreeScreen action from header
+### Passing commands to Three.js from outside files
+  Our application's 3D landscape visuals and controls were built upon the THREE.js library. This was extremely useful as it provided a playground to operate creatively and build our galaxy. As seen while navigating through our rendered space, the camera controls in the library provided us with the ability to accomplish engaging and intuitive visual feats for the user. We ran into issues when exploring implementations of camera positioning from outside sources. We implemented the THREE.js library in our three.js file by adding functionality to a large-use effect rendered on start-up. This single render ensured the user wouldn't be randomly teleported 'back to start' because of a dependency update. This implementation ended up constraining our abilities and would be the case for a large refactor had we had more time to do so.
+  The feature which identified this issue is the planets dropdown tab in the header. Our vision was that upon clicking a planet, the user would be teleported to the view of that associated planet. Following 3-4 hours of pair programming, we were unable to find a solution where we could 1) identify the select element changed value, 2) extract that value to pass it to three.js, and 3) update the camera position based on the randomly generated position of our planets on startup, step 3 being the problem child.
 
 <!-- CONTRIBUTING -->
 ## Contributing
@@ -210,7 +212,7 @@ Project Link: [https://github.com/damnordicus/starwars-app](https://github.com/d
 <!-- ACKNOWLEDGMENTS -->
 ## Acknowledgments
 
-* Galvanize Instrutors
+* Galvanize Instructors
 * PST Working Schedule Superiority
 * Coffee
 
@@ -228,24 +230,8 @@ Project Link: [https://github.com/damnordicus/starwars-app](https://github.com/d
 [stars-url]: https://github.com/damnordicus/starwars-app/stargazers
 [issues-shield]: https://img.shields.io/github/issues/damnordicus/starwars-app.svg?style=for-the-badge
 [issues-url]: https://github.com/damnordicus/starwars-app/issues
-[license-shield]: https://img.shields.io/github/license/damnordicus/starwars-app.svg?style=for-the-badge
-[license-url]: https://github.com/damnordicus/starwars-app/blob/master/LICENSE.txt
-[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
-[linkedin-url]: https://linkedin.com/in/DELETE
 [product-screenshot]: images/screenshot.png
 [Next.js]: https://img.shields.io/badge/next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white
 [Next-url]: https://nextjs.org/
 [React.js]: https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB
 [React-url]: https://reactjs.org/
-[Vue.js]: https://img.shields.io/badge/Vue.js-35495E?style=for-the-badge&logo=vuedotjs&logoColor=4FC08D
-[Vue-url]: https://vuejs.org/
-[Angular.io]: https://img.shields.io/badge/Angular-DD0031?style=for-the-badge&logo=angular&logoColor=white
-[Angular-url]: https://angular.io/
-[Svelte.dev]: https://img.shields.io/badge/Svelte-4A4A55?style=for-the-badge&logo=svelte&logoColor=FF3E00
-[Svelte-url]: https://svelte.dev/
-[Laravel.com]: https://img.shields.io/badge/Laravel-FF2D20?style=for-the-badge&logo=laravel&logoColor=white
-[Laravel-url]: https://laravel.com
-[Bootstrap.com]: https://img.shields.io/badge/Bootstrap-563D7C?style=for-the-badge&logo=bootstrap&logoColor=white
-[Bootstrap-url]: https://getbootstrap.com
-[JQuery.com]: https://img.shields.io/badge/jQuery-0769AD?style=for-the-badge&logo=jquery&logoColor=white
-[JQuery-url]: https://jquery.com 
