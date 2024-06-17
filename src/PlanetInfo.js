@@ -13,7 +13,7 @@ const PlanetInfo = ({ planetId, setShowPlanetInfo, showPlanetInfo, planetDatas }
   if(planetDatas && planetName){
     for(let i = 0; i < planetDatas.length; i++){
       if(planetDatas[i].name === planetName){
-         planData = i;
+         planData = i + 1;
       }
     }
   }
@@ -25,7 +25,7 @@ const PlanetInfo = ({ planetId, setShowPlanetInfo, showPlanetInfo, planetDatas }
   
 
 if(planData){
-    planetId = planData + 1;
+    planetId = planData;
   }
   useEffect(() => {
     if (planetId) {
