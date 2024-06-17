@@ -66,6 +66,7 @@
     </li>
     <li><a href="#usage">Usage</a></li>
     <li><a href="#roadmap">Roadmap</a></li>
+    <li><a href="#Lessons">Lessons</a></li>
     <li><a href="#contributing">Contributing</a></li>
     <li><a href="#license">License</a></li>
     <li><a href="#contact">Contact</a></li>
@@ -99,7 +100,7 @@ An interactive view into the Star Wars universe that encourages you to check out
 <!-- GETTING STARTED -->
 ## Getting Started
 
-To get a local copy up and running follow these steps.
+To get a local copy up and running, follow these steps.
 
 ### Prerequisites
 
@@ -168,7 +169,10 @@ See the [open issues](https://github.com/damnordicus/starwars-app/issues) for a 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
+<!-- Lessons -->
+## Lessons
 
+### Camera implementation issue in useEffect of ThreeScreen action from header
 
 <!-- CONTRIBUTING -->
 ## Contributing
