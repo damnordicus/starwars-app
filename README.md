@@ -81,8 +81,7 @@
 <a href="https://github.com/damnordicus/starwars-app">
     <img src="./src/app-logo.png" alt="Logo" width="240" height="240";>
   </a>
-
-Here's a blank template to get started: To avoid retyping too much info. Do a search and replace with your text editor for the following: `damnordicus`, `starwars-app`, `DELETE THIS`, `DELETE`, `DELETE`, `DELETE`, `Star Wars Universe Explorer`, `PLACE DESCRIPTION HERE`
+An interactive view into the Star Wars universe that encourages you to check out some of the planets, and see what films they're in and see what characters are on them. 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -134,7 +133,17 @@ Things you need to use the software and how to install them.
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-_EDIT THIS SECTION_ Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
+Using your mouse, you control the ship by clicking and holding the left or right mouse buttons, along with using the scroll ability.
+
+Left mouse button (click and hold): allows you to look all around you.
+Right mouse button (click and hold): lets you slide up/down/left/right while facing the same direction.
+Scroll in/out: zoom in/out.
+
+If there's a planet visible on your screen, you can put your mouse cursor over it, and it's name will show up with a ring surrounding the planet to show which planet is currently in question. 
+
+Clicking on a planet will automatically pilot the ship directly to the planet and stop leaving the planet in the center of your screen. During this travel, a pop up will show all of the details of that planet, including the characters from that planet, and the films which that planet has been in.
+
+If you don't want to travel with the ship, the header bar has a drop down to allow you to choose a planet, and it will show you the same pop up with information on that planet, it just won't have the camera travelling there at this time. 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 

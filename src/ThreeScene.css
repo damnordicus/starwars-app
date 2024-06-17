@@ -1,8 +1,8 @@
 .overlay {
     position: absolute;
   top: 25%;
-  left: 0;
-  width: 100%;
+  left: -50%;
+  width: 200%;
   height: 100%;
   background: url("../public/textures/cockpit.png") no-repeat center center;
   background-size: cover;
