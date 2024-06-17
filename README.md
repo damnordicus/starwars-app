@@ -26,7 +26,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/damnordicus/starwars-app">
-    <img src="Star Wars App Example.png" alt="Logo" width="420" height="240";>
+    <img src="Star Wars App Example.png" alt="Logo" width="550" height="340";>
   </a>
 
 <h3 align="center">Star Wars Universe Explorer</h3>
