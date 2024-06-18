@@ -126,7 +126,7 @@ if(planData){
       {/* <p>Characters: {planetData.residents.map(x => <p>{x}</p>)}</p> */}
       {/* {x} is each element in the array and requires <p> tags to be displayed */}
 
-      <h3>Actors:</h3>
+      <h3>Visiting Characters:</h3>
       <ul>
         {characters.length === 0 && <li>N/A...</li>}{" "}
         {/* // Show "N/A..." if there are no characters or data is still loading */}
@@ -137,7 +137,7 @@ if(planData){
 
 
 
-      <h3>Movies:</h3>
+      <h3>Featured Movies:</h3>
       <ul>
         {movies.length === 0 && <li>N/A...</li>}{" "}
         {/* // Show "N/A..." if there are no movies or data is still loading */}

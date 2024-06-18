@@ -1,9 +1,9 @@
 
 
-const CharacterDetail = ({ character, setSelectedCharacter }) => {
+const MovieDetails = ({ movie, setSelectedMovie }) => {
 
     return (
-        <div className="character-detail"
+        <div className="movie-details"
 
             style={{
                 position: "absolute",
@@ -18,7 +18,7 @@ const CharacterDetail = ({ character, setSelectedCharacter }) => {
                 overflowY: "auto", // Enable vertical scrolling if content exceeds max height
             }}>
             <button
-                onClick={() => { setSelectedCharacter(false) }}
+                onClick={() => { setSelectedMovie(false) }}
                 style={{
                     position: "absolute",
                     top: "5px",
@@ -32,21 +32,14 @@ const CharacterDetail = ({ character, setSelectedCharacter }) => {
             >
                 ×
             </button>
-            <h1>{character.name}</h1>
-            <img src={character.image} width="150"></img>
-            <p>Homeworld: {`${character.homeworld[0].toUpperCase()}${character.homeworld.slice(1)}`}</p>
-            <p>Species: {character.species}</p>
-            <p>Affiliations:
-                {character.affiliations.map(elem => (
-                    <ul
-                        style={{ fontSize: "10pt" }}>
-                        {elem}
-                    </ul>
-                ))}
-            </p>
+            <h1>{movie.title}</h1>
+            <p>Episode ID: {movie.episode_id}</p>
+            <p>Opening Crawl: {movie.opening_crawl}</p>
+            <p>Director:{movie.director}</p>
+            <p>Release Date:{movie.release_date}</p>
 
         </div>
     )
 }
 
-export default CharacterDetail;
+export default MovieDetails;

@@ -1,18 +1,18 @@
+//MovieList.js
 import { useState } from 'react';
-// import { Navigate, useParams } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
-import characterData from './characters';
-import Character from './Character';
-import CharacterDetail from './CharacterDetail';
+import movieData from './movies';
+import Movie from './Movie';
+import MovieDetails from './MovieDetails';
 
-const CharacterList = () => {
-    const [selectedCharacter, setSelectedCharacter] = useState(false);
+const MovieList = () => {
+    const [selectedMovie, setSelectedMovie] = useState(null);
     const navigate = useNavigate();
 
-    if (selectedCharacter) {
+    if (selectedMovie) {
         return (
-            <CharacterDetail character={selectedCharacter}
-                setSelectedCharacter={setSelectedCharacter} />
+            <MovieDetails movie={selectedMovie}
+                setSelectedMovie={setSelectedMovie} />
         )
     }
 
@@ -23,9 +23,10 @@ const CharacterList = () => {
         // }
         // setShowPlanetInfo(false);
     };
+    console.log(movieData);
 
     return (
-        <div className="character-list"
+        <div className="movie-list"
             style={{
                 position: "absolute",
                 top: 120,
@@ -54,11 +55,20 @@ const CharacterList = () => {
             >
                 ×
             </button>
-            {characterData.map(character => (
-                <Character character={character}
-                    setSelectedCharacter={setSelectedCharacter} />))}
+            {/* {console.log(movieData.results)} */}
+            {movieData && movieData.results && movieData.results.length > 0 ? (
+                movieData.results.map((movie) => (
+                    <Movie 
+                        key={movie.episode_id} 
+                        movie={movie} 
+                        setSelectedMovie={setSelectedMovie} 
+                    />
+                ))
+            ) : (
+                <p>No movies available</p>
+            )}
         </div>
-    )
-}
+    );
+};
 
-export default CharacterList;
+export default MovieList;
