@@ -58,8 +58,9 @@ const MovieList = () => {
             {/* {console.log(movieData.results)} */}
             {movieData && movieData.results && movieData.results.length > 0 ? (
                 movieData.results.map((movie) => (
+                    // included a conditional check to ensure 'movieData', and etc... are defined
                     <Movie 
-                        key={movie.episode_id} 
+                        key={movie.episode_id} //prop added
                         movie={movie} 
                         setSelectedMovie={setSelectedMovie} 
                     />

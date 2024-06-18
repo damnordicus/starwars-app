@@ -1,3 +1,5 @@
+//movies.js
+//modified how 'movieData' was imported and exported
 const movieData = {
     "count": 6,
     "next": null,
