@@ -19,7 +19,7 @@ const MovieList = () => {
     const handleCloseClick = (e) => {
         e.stopPropagation(); // Prevent the click event from propagating to the parent element
         // if (planetName) {
-            navigate("/");
+        navigate("/");
         // }
         // setShowPlanetInfo(false);
     };
@@ -59,10 +59,10 @@ const MovieList = () => {
             {movieData && movieData.results && movieData.results.length > 0 ? (
                 movieData.results.map((movie) => (
                     // included a conditional check to ensure 'movieData', and etc... are defined
-                    <Movie 
+                    <Movie
                         key={movie.episode_id} //prop added
-                        movie={movie} 
-                        setSelectedMovie={setSelectedMovie} 
+                        movie={movie}
+                        setSelectedMovie={setSelectedMovie}
                     />
                 ))
             ) : (

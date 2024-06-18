@@ -35,8 +35,8 @@ const MovieDetails = ({ movie, setSelectedMovie }) => {
             <h1>{movie.title}</h1>
             <p>Episode ID: {movie.episode_id}</p>
             <p>Opening Crawl: {movie.opening_crawl}</p>
-            <p>Director:{movie.director}</p>
-            <p>Release Date:{movie.release_date}</p>
+            <p>Director: {movie.director}</p>
+            <p>Release Date: {movie.release_date}</p>
 
         </div>
     )
